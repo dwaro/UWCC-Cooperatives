@@ -26,7 +26,7 @@ function createMap(){
 	var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	   maxZoom: 18,
 	   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-	}).addTo(map)
+	}).addTo(map);
 
 	// add navigation bar to the map
 	L.control.navbar().addTo(map);
@@ -80,6 +80,7 @@ function processData(data){
 
 // add markers for point features to the map
 function createSymbols(data, map, attributes){
+
   // marker cluster group
 	var marker_cluster = L.markerClusterGroup();
 
@@ -185,9 +186,13 @@ function Popup(properties, layer, radius){
   this.properties = properties;
   this.layer = layer;
   // content in popup with html
-  this.content = "<h5><b>" + this.properties.Name + "</h5></b>" +
-    "<p>" + this.properties.Street_Address + "</p>" +
-    "<p>" + this.properties.City + ", " + this.properties.State + " " + this.properties.Zip_Code + "</p>";
+  this.content = "<h5><b>" + this.properties.Name + "</h5></b>";
+
+  if (this.properties.Street_Address != null) {
+    this.content += "<p>" + this.properties.Street_Address + "</p>";
+  }
+
+  this.content += "<p>" + this.properties.City + ", " + this.properties.State + " " + this.properties.Zip_Code + "</p>";
 
   // binds the popup to the marker and positions it on top center
   this.bindToLayer = function(){
