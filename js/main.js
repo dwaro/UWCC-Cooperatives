@@ -14,9 +14,9 @@ function createMap(){
 
   // map object
 	map = L.map('mapdiv', {
-		preferCanvas: true,
-    spinjs: true,
-    fullscreenControl: true,
+		renderer: L.canvas(),
+    	spinjs: true,
+    	fullscreenControl: true,
 		removeOutsideVisibleBounds: true,
 		center: [39, -99],
 		zoom: 4
