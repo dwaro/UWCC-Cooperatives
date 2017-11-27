@@ -8,19 +8,23 @@ function initialize(){
 // global map variable
 var map;
 
+// marker cluster group
+var marker_cluster = L.markerClusterGroup();
+
 /* function initializes the map object and assigns its setting (i.e. center, bounds, zoom, restrictions) and adds
 a basemap tileset */
 function createMap(){
 
   // map object
-	map = L.map('mapdiv', {
-		renderer: L.canvas(),
-    	spinjs: true,
-    	fullscreenControl: true,
-		removeOutsideVisibleBounds: true,
-		center: [39, -99],
-		zoom: 4
-	});
+  map = L.map('mapdiv', {
+    renderer: L.canvas(),
+    spinjs: true,
+    fullscreenControl: true,
+    removeOutsideVisibleBounds: true,
+    center: [39, -99],
+    zoom: 4,
+    maxZoom: 20
+  });
 
   // tileset, can easily be swapped out
 	var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -28,8 +32,24 @@ function createMap(){
 	   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	}).addTo(map);
 
-	// add navigation bar to the map
-	L.control.navbar().addTo(map);
+  var baseMaps = {
+    "Open Street Map": basemap
+  };
+
+	var csa_metro = new L.GeoJSON.AJAX("data/2016_csa_500k.geojson", {style: csaStyle});
+  var non_metro = new L.GeoJSON.AJAX("data/Non_metro_500k.geojson", {style: non_metroStyle});
+
+  var overlayMaps = {
+    "Cooperatives": marker_cluster,
+    "CSA Metro": csa_metro,
+    "Non-Metro": non_metro
+  };
+
+  // add navigation bar to the map
+  L.control.navbar().addTo(map);
+
+  // control
+  L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 	getData(map);
 };
@@ -81,9 +101,6 @@ function processData(data){
 // add markers for point features to the map
 function createSymbols(data, map, attributes){
 
-  // marker cluster group
-	var marker_cluster = L.markerClusterGroup();
-
   // create a Leaflet GeoJSON layer and add it to the map
   var symbols = L.geoJson(data, {
     pointToLayer: function(feature, latlng, map){
@@ -99,10 +116,10 @@ function createSymbols(data, map, attributes){
 
   // only load markers within the visible bounds
   marker_cluster._getExpandedVisibleBounds = function () {
-    	return marker_cluster._map.getBounds();
-	};
+      return marker_cluster._map.getBounds();
+  };
 
-}; // close ot createSymbols
+}; // close to createSymbols
 
 // function to create markers layer
 function pointToLayer(feature, latlng, attributes, layer, map) {
@@ -202,6 +219,28 @@ function Popup(properties, layer, radius){
     });
   }; // close to bindToLayer
 }; // close to Popup function
+
+// styling for csa metro region
+function csaStyle() {
+	return {
+		fillColor: 'red',
+		weight: 1,
+		opacity: 0.9,
+		color: 'black',
+		fillOpacity: 0.45
+	};
+};
+
+// styling for non-metro counties
+function non_metroStyle() {
+  return {
+    fillColor: 'gold',
+    weight: 1,
+    opacity: 0.9,
+    color: 'black',
+    fillOpacity: 0.45
+  };
+};
 
 //call the initialize function when the document has loaded
 $(document).ready(initialize);
