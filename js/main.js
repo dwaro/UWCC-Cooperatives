@@ -224,7 +224,7 @@ function Popup(properties, layer, radius){
 function csaStyle() {
 	return {
 		fillColor: 'red',
-		weight: 1,
+		weight: 0.5,
 		opacity: 0.9,
 		color: 'black',
 		fillOpacity: 0.45
@@ -235,7 +235,7 @@ function csaStyle() {
 function non_metroStyle() {
   return {
     fillColor: 'gold',
-    weight: 1,
+    weight: 0.5,
     opacity: 0.9,
     color: 'black',
     fillOpacity: 0.45
