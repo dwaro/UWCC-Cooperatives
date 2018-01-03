@@ -19,6 +19,7 @@ var marker_cluster = L.markerClusterGroup({
 var marker_cluster1 = L.markerClusterGroup({
   showCoverageOnHover: false,
   removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
   iconCreateFunction: function(cluster) {
     return L.divIcon({html: cluster.getChildCount(), className: 'comIcon', bgpos: [0,0]});
   }
@@ -26,6 +27,7 @@ var marker_cluster1 = L.markerClusterGroup({
 var marker_cluster2 = L.markerClusterGroup({
   showCoverageOnHover: false,
   removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
   iconCreateFunction: function(cluster) {
     return L.divIcon({ html: cluster.getChildCount(), className: 'finIcon', bgpos: [0,0]});
   }
@@ -33,6 +35,7 @@ var marker_cluster2 = L.markerClusterGroup({
 var marker_cluster3 = L.markerClusterGroup({
   showCoverageOnHover: false,
   removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
   iconCreateFunction: function(cluster) {
     return L.divIcon({ html: cluster.getChildCount(), className: 'socIcon', bgpos: [0,0]});
   }
@@ -40,13 +43,15 @@ var marker_cluster3 = L.markerClusterGroup({
 var marker_cluster4 = L.markerClusterGroup({
   showCoverageOnHover: false,
   removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
   iconCreateFunction: function(cluster) {
     return L.divIcon({ html: cluster.getChildCount(), className: 'utilIcon', bgpos: [0,0]});
   }
 });
 var marker_cluster5 = L.markerClusterGroup({
   showCoverageOnHover: false,
-  removeOutsideVisibleBounds: true
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true
 });
 
 /* function initializes the map object and assigns its setting (i.e. center, bounds, zoom, restrictions) and adds
