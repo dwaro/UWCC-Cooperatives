@@ -8,12 +8,14 @@ function initialize(){
 // global map variable
 var map;
 
-// marker cluster group
+// all-cooperatives marker cluster group
 var marker_cluster = L.markerClusterGroup({
   showCoverageOnHover: false,
   removeOutsideVisibleBounds: true,
   chunkedLoading: true
 });
+
+// marker-cluster groups for each sector
 var marker_cluster1 = L.markerClusterGroup({
   showCoverageOnHover: false,
   removeOutsideVisibleBounds: true,
@@ -69,13 +71,13 @@ function createMap(){
 	   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	}).addTo(map);
 
-  var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+  var mapbox_satellite = L.tileLayer('https://api.mapbox.com/styles/v1/djwaro/cjbzbsfd2g1vx2sruqno7xwkb/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGp3YXJvIiwiYSI6ImNpdXJwYnRidTAwOWgyeXJ2ZnJ6ZnVtb3AifQ.1ajSBLNXDrHg6M7PE_Py_A', {
+    attribution: 'Mapbox Satellite Streets'
   });
 
   var baseMaps = {
     "Open Street Map": basemap,
-    "Esri Satellite": Esri_WorldImagery
+    "Mapbox Satellite": mapbox_satellite
   };
 
 	var csa_metro = new L.GeoJSON.AJAX("data/2016_csa_500k.geojson", {style: csaStyle});
@@ -237,8 +239,6 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
     });
   };
 
-  // var marker_cluster6 = L.markerClusterGroup();
-
   // assign each marker to the layer
   var layer = L.marker(latlng, {title: name});
   layer.setIcon(icon);
@@ -254,12 +254,6 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
   } else {
     marker_cluster5.addLayer(layer);
   }; 
-
-  // marker_cluster1.addTo(marker_cluster6);
-  // marker_cluster2.addTo(marker_cluster6);
-  // marker_cluster3.addTo(marker_cluster6);
-  // marker_cluster4.addTo(marker_cluster6);
-  // marker_cluster5.addTo(marker_cluster6);
  
   // creates a new popup object
   var popup = new Popup(feature.properties, layer, 5);
@@ -267,13 +261,13 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
   // add popup to marker
   popup.bindToLayer();
 
-  // $("#commercial").on('click', function(){
-  //   marker_cluster.remove();
-  //   map.addLayer(marker_cluster1);
-  //   // if (feature.properties.Sector == 'Commercial Sales & Marketing') {
-  //   //   marker_cluster1.add();
-  //   // };
-  // });
+  $("#legend").on({mouseover: function(){
+    $("#labels").css("display", "inline-block");
+    },
+    mouseout: function() {
+    $("#labels").css("display", "none");
+    }
+  });
 
   //event listeners to open popup on click
   layer.on({

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UWCC Cooperatives</title>
     <!-- links for styling -->
-	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+	  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
   crossorigin=""/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
@@ -26,26 +26,17 @@
 	<div id="mapdiv"></div>
   <div id="search"></div>
   <div id="legend">
-    <div id="commercial" class="legend">
-      <div id="comm-circle" class="circles"></div>
-      Commercial Sales and Marketing
-    </div>
-    <div id="financial" class="legend">
-      <div id="fin-circle" class="circles"></div>
-      Financial Services
-    </div>
-    <div id="social" class="legend">
-      <div id="soc-circle" class="circles"></div>
-      Social and Public Services
-    </div>
-    <div id="utilities" class="legend">
-      <div id="util-circle" class="circles"></div>
-      Utilities
-    </div>
+    <div id="comm_circle" class="legend"></div>
+    <div id="fin_circle" class="legend"></div>
+    <div id="soc_circle" class="legend"></div>
+    <div id="util_circle" class="legend"></div>
   </div>
-  <div id='legend1' class="boxes"></div>
-  <div id='legend2' class="boxes"></div>
-  <div id='legend3' class="boxes"></div>
+  <div id="labels">
+    <div id="commercial">Commercial Sales & Marketing</div>
+    <div id="financial">Financial Services</div>
+    <div id="social">Social & Public Services</div>
+    <div id="utilities">Utilities</div>
+  </div>
 
   <!-- script source links -->
 	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
