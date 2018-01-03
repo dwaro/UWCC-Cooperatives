@@ -18,10 +18,34 @@
     <link rel="stylesheet" type="text/css" href="L.Control.ZoomBar-master/src/L.Control.ZoomBar.css"/>
     <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
     <link rel="stylesheet" href="Leaflet.NavBar-master/src/Leaflet.NavBar.css"/>
+    <link rel="stylesheet" href="search/search_min.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 	<!-- map division -->
-	<div id="mapdiv" style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; bottom: 0px; right: 0px;"></div>
+	<div id="mapdiv"></div>
+  <div id="search"></div>
+  <div id="legend">
+    <div id="commercial" class="legend">
+      <div id="comm-circle" class="circles"></div>
+      Commercial Sales and Marketing
+    </div>
+    <div id="financial" class="legend">
+      <div id="fin-circle" class="circles"></div>
+      Financial Services
+    </div>
+    <div id="social" class="legend">
+      <div id="soc-circle" class="circles"></div>
+      Social and Public Services
+    </div>
+    <div id="utilities" class="legend">
+      <div id="util-circle" class="circles"></div>
+      Utilities
+    </div>
+  </div>
+  <div id='legend1' class="boxes"></div>
+  <div id='legend2' class="boxes"></div>
+  <div id='legend3' class="boxes"></div>
 
   <!-- script source links -->
 	<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
@@ -39,6 +63,7 @@
   <script src="L.Control.ZoomBar-master/src/L.Control.ZoomBar.js"></script>
   <script type="text/javascript" src="js/canvas_markers.js"></script>
   <script type="text/javascript" src="js/ajax.js"></script>
+  <script type="text/javascript" src="search/search_min.js"></script>
   <script>L_PREFER_CANVAS=true;</script>
   <script type="text/javascript" src="js/main.js"></script>
 </body>

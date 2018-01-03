@@ -9,7 +9,43 @@ function initialize(){
 var map;
 
 // marker cluster group
-var marker_cluster = L.markerClusterGroup();
+var marker_cluster = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true
+});
+var marker_cluster1 = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'comIcon', bgpos: [0,0]});
+  }
+});
+var marker_cluster2 = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({ html: cluster.getChildCount(), className: 'finIcon', bgpos: [0,0]});
+  }
+});
+var marker_cluster3 = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({ html: cluster.getChildCount(), className: 'socIcon', bgpos: [0,0]});
+  }
+});
+var marker_cluster4 = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({ html: cluster.getChildCount(), className: 'utilIcon', bgpos: [0,0]});
+  }
+});
+var marker_cluster5 = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true
+});
 
 /* function initializes the map object and assigns its setting (i.e. center, bounds, zoom, restrictions) and adds
 a basemap tileset */
@@ -19,11 +55,12 @@ function createMap(){
   map = L.map('mapdiv', {
     renderer: L.canvas(),
     spinjs: true,
-    fullscreenControl: true,
+    fullscreenControl: false,
     removeOutsideVisibleBounds: true,
     center: [39, -99],
     zoom: 4,
-    maxZoom: 20
+    maxZoom: 18,
+    zoomControl: false
   });
 
   // tileset, can easily be swapped out
@@ -32,24 +69,38 @@ function createMap(){
 	   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	}).addTo(map);
 
+  var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+  });
+
   var baseMaps = {
-    "Open Street Map": basemap
+    "Open Street Map": basemap,
+    "Esri Satellite": Esri_WorldImagery
   };
 
 	var csa_metro = new L.GeoJSON.AJAX("data/2016_csa_500k.geojson", {style: csaStyle});
   var non_metro = new L.GeoJSON.AJAX("data/Non_metro_500k.geojson", {style: non_metroStyle});
 
   var overlayMaps = {
-    "Cooperatives": marker_cluster,
+    "All Cooperatives": marker_cluster,
+    "Commercial": marker_cluster1,
+    "Financial": marker_cluster2,
+    "Social": marker_cluster3,
+    "Utilities": marker_cluster4,
     "CSA Metro": csa_metro,
     "Non-Metro": non_metro
   };
 
+  // layers control
+  L.control.layers(baseMaps, overlayMaps, {collapsed:false}).addTo(map);
+
+  //add zoom control with your options
+  L.control.zoom({
+     position:'topleft'
+  }).addTo(map);
+
   // add navigation bar to the map
   L.control.navbar().addTo(map);
-
-  // control
-  L.control.layers(baseMaps, overlayMaps).addTo(map);
 
 	getData(map);
 };
@@ -61,7 +112,7 @@ function getData(map) {
   map.spin(true);
 	
   //load the data
-	$.ajax("data/coop_data_2017.geojson", {
+	$.ajax("data/2015_1_2_18.geojson", {
 	   dataType: "json",
 	   success: function(response){
 
@@ -88,7 +139,7 @@ function processData(data){
 	  for (var attribute in properties){
 
 	    // condition to make sure attributes are pushed
-	    if (attribute.indexOf("Name") != "adsfsa"){
+	    if (attribute.indexOf("Company") != "adsfsa"){
 	      attributes.push(attribute);
 	    };
 
@@ -119,6 +170,24 @@ function createSymbols(data, map, attributes){
       return marker_cluster._map.getBounds();
   };
 
+  var searchControl = new L.Control.Search({
+    layer: marker_cluster, 
+    propertyName: 'Search_Add',
+    circleLocation: false,
+    marker: false,
+    moveToLocation: function (latlng, title, map) {
+      // set the view once searched to the circle marker's latlng and zoom
+      map.setView(latlng, 17);
+    } // close to moveToLocation
+  });
+
+  map.addControl(searchControl);  //inizialize search control
+
+  //add zoom control with your options
+  L.control.fullscreen({
+     position:'topleft'
+  }).addTo(map);
+
 }; // close to createSymbols
 
 // function to create markers layer
@@ -126,7 +195,7 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
 
   // marker styling
   var icon;
-  if (feature.properties.Sector_Code >= 10 && feature.properties.Sector_Code < 20) {
+  if (feature.properties.Sector == 'Commercial Sales & Marketing') {
     icon = L.AwesomeMarkers.icon({
         icon: 'ok-sign',
         iconColor: 'white',
@@ -134,7 +203,7 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
         prefix: 'glyphicon',
         extraClasses: 'fa-rotate-0'
     });
-  } else if (feature.properties.Sector_Code >= 20 && feature.properties.Sector_Code < 30) {
+  } else if (feature.properties.Sector == 'Financial') {
     icon = L.AwesomeMarkers.icon({
         icon: 'ok-sign',
         iconColor: 'white',
@@ -142,7 +211,7 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
         prefix: 'glyphicon',
         extraClasses: 'fa-rotate-0'
     });
-  } else if (feature.properties.Sector_Code >= 30 && feature.properties.Sector_Code < 40) {
+  } else if (feature.properties.Sector == 'Social and Public Services') {
     icon = L.AwesomeMarkers.icon({
         icon: 'ok-sign',
         iconColor: 'white',
@@ -150,7 +219,7 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
         prefix: 'glyphicon',
         extraClasses: 'fa-rotate-0'
     });
-  } else if (feature.properties.Sector_Code >= 40 && feature.properties.Sector_Code < 50) {
+  } else if (feature.properties.Sector == 'Utilities') {
     icon = L.AwesomeMarkers.icon({
         icon: 'ok-sign',
         iconColor: 'white',
@@ -168,15 +237,43 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
     });
   };
 
+  // var marker_cluster6 = L.markerClusterGroup();
+
   // assign each marker to the layer
-  var layer = L.marker(latlng);
+  var layer = L.marker(latlng, {title: name});
   layer.setIcon(icon);
 
+  if (feature.properties.Sector == 'Commercial Sales & Marketing') {
+    marker_cluster1.addLayer(layer);
+  } else if (feature.properties.Sector == 'Financial') {
+    marker_cluster2.addLayer(layer);
+  } else if (feature.properties.Sector == 'Social and Public Services') {
+    marker_cluster3.addLayer(layer);
+  } else if (feature.properties.Sector == 'Utilities') {
+    marker_cluster4.addLayer(layer);
+  } else {
+    marker_cluster5.addLayer(layer);
+  }; 
+
+  // marker_cluster1.addTo(marker_cluster6);
+  // marker_cluster2.addTo(marker_cluster6);
+  // marker_cluster3.addTo(marker_cluster6);
+  // marker_cluster4.addTo(marker_cluster6);
+  // marker_cluster5.addTo(marker_cluster6);
+ 
   // creates a new popup object
   var popup = new Popup(feature.properties, layer, 5);
 
   // add popup to marker
   popup.bindToLayer();
+
+  // $("#commercial").on('click', function(){
+  //   marker_cluster.remove();
+  //   map.addLayer(marker_cluster1);
+  //   // if (feature.properties.Sector == 'Commercial Sales & Marketing') {
+  //   //   marker_cluster1.add();
+  //   // };
+  // });
 
   //event listeners to open popup on click
   layer.on({
@@ -203,13 +300,13 @@ function Popup(properties, layer, radius){
   this.properties = properties;
   this.layer = layer;
   // content in popup with html
-  this.content = "<h5><b>" + this.properties.Name + "</h5></b>";
-
-  if (this.properties.Street_Address != null) {
-    this.content += "<p>" + this.properties.Street_Address + "</p>";
-  }
-
-  this.content += "<p>" + this.properties.City + ", " + this.properties.State + " " + this.properties.Zip_Code + "</p>";
+  this.content = "<h5 class='text-center'><b>" + this.properties.Company + "</h5></b>";
+  var address = this.properties.Search_Add.split(",")[1];
+      address += ", " + this.properties.Search_Add.split(",")[2];
+      address += ", " + this.properties.Search_Add.split(",")[3];
+  this.content += "<p><b>Address:</b> " + address + "</p>";
+  this.content += "<p><b>Employee Size:</b> " + this.properties.Emp_Size + "</p>";
+  this.content += "<p><b>Sales Volume:</b> " + this.properties.Sales_Vol + "</p>";
 
   // binds the popup to the marker and positions it on top center
   this.bindToLayer = function(){

@@ -1,0 +1,196 @@
+/* style for UWCC 2017-2018, David J. Waro */
+
+#mapdiv {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	z-index: -1;
+}
+
+#search {
+	position: absolute;
+	height: 50px;
+	width: 250px;
+	left: 200px;
+	top: 0px;
+	z-index: 1;
+	background-color: rgb(250, 250, 240);
+	border: solid;
+	border-color: black;
+	border-width: 2px;
+	border-top: none;
+	border-left: none;
+	display: none;
+}
+
+#legend {
+	position: absolute;
+	height: 200px;
+	width: 300px;
+	left: 0px;
+	bottom: 33px;
+	background-color: rgba(250, 250, 250, 0.7);
+	border: solid;
+	border-width: 1px;
+	border-color: black;
+	border-left: none;
+	z-index: 10000000000;
+}
+
+.legend {
+	position: absolute;
+	left: 50px;
+	height: 50px;
+	width: 350px;
+	font-size: 15px;
+	font-weight: bold;
+	z-index: 1;
+}
+
+#commercial {
+	top: 0px;
+	padding-top: 12px;
+}
+
+#commercial:hover {
+	cursor: pointer;
+	color: #008ae6;
+}
+
+#financial {
+	top: 50px;
+	padding-top: 10px;
+}
+
+#financial:hover {
+	cursor: pointer;
+	color: rgb(215, 0, 0);
+}
+
+#social {
+	top: 100px;
+	padding-top: 10px;
+}
+
+#social:hover {
+	cursor: pointer;
+	color: orange;
+}
+
+#utilities {
+	top: 150px;
+	padding-top: 10px;
+}
+
+#utilities:hover {
+	cursor: pointer;
+	color: #29a329;
+}
+
+.circles {
+	position: absolute;
+	left: -40px;
+	height: 25px;
+	width: 25px;
+	z-index: 100;
+	border-radius: 25px;
+}
+
+#comm-circle {
+	background-color: #008ae6;
+	top: 8px;
+}
+
+#fin-circle {
+	background-color: rgb(215, 0, 0);
+	top: 8px;
+}
+
+#soc-circle {
+	background-color: orange;
+	top: 8px;
+}
+
+#util-circle {
+	background-color: #29a329;
+	top: 8px;
+}
+
+/*.boxes{
+	position: absolute;
+	left: 0px;
+	border-bottom: solid;
+	border-color: black;
+	border-width: 1px;
+	height: 50px;
+	width: 300px;
+}
+
+#legend1 {
+	bottom: 183px;
+}
+
+#legend2 {
+	bottom: 133px;
+}
+
+#legend3 {
+	bottom: 83px;
+}*/
+
+.comIcon {
+	background-color: #008ae6;
+	border-radius: 20px;
+	text-align: center;
+	color: white;
+	padding-top: 11.45px;
+}
+
+div.leaflet-marker-icon.comIcon.leaflet-zoom-animated.leaflet-interactive {
+	width: 40px !important;
+	height: 40px !important;
+}
+
+.finIcon {
+	background-color: rgb(215, 0, 0);
+	border-radius: 20px;
+	text-align: center;
+	color: white;
+	padding-top: 11.45px;
+}
+
+div.leaflet-marker-icon.finIcon.leaflet-zoom-animated.leaflet-interactive {
+	width: 40px !important;
+	height: 40px !important;
+}
+
+.socIcon {
+	background-color: orange;
+	border-radius: 20px;
+	text-align: center;
+	color: white;
+	padding-top: 11.45px;
+}
+
+div.leaflet-marker-icon.socIcon.leaflet-zoom-animated.leaflet-interactive {
+	width: 40px !important;
+	height: 40px !important;
+}
+
+.utilIcon {
+	background-color: #29a329;
+	border-radius: 20px;
+	text-align: center;
+	color: white;
+	padding-top: 11.45px;
+}
+
+div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
+	width: 40px !important;
+	height: 40px !important;
+}
+
