@@ -177,7 +177,7 @@ function createSymbols(data, map, attributes){
       return marker_cluster._map.getBounds();
   };
 
-  
+
 
   var searchControl = new L.Control.Search({
     layer: marker_cluster, 
@@ -321,7 +321,7 @@ function Popup(properties, layer, radius){
 // styling for csa metro region
 function csaStyle() {
 	return {
-		fillColor: 'red',
+		fillColor: 'gray',
 		weight: 0.5,
 		opacity: 0.9,
 		color: 'black',
@@ -332,7 +332,7 @@ function csaStyle() {
 // styling for non-metro counties
 function non_metroStyle() {
   return {
-    fillColor: 'gold',
+    fillColor: 'blue',
     weight: 0.5,
     opacity: 0.9,
     color: 'black',
