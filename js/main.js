@@ -177,6 +177,8 @@ function createSymbols(data, map, attributes){
       return marker_cluster._map.getBounds();
   };
 
+  
+
   var searchControl = new L.Control.Search({
     layer: marker_cluster, 
     propertyName: 'Search_Add',
@@ -303,9 +305,9 @@ function Popup(properties, layer, radius){
   var address = this.properties.Search_Add.split(",")[1];
       address += ", " + this.properties.Search_Add.split(",")[2];
       address += ", " + this.properties.Search_Add.split(",")[3];
-  this.content += "<p><b>Address:</b> " + address + "</p>";
-  this.content += "<p><b>Employee Size:</b> " + this.properties.Emp_Size + "</p>";
-  this.content += "<p><b>Sales Volume:</b> " + this.properties.Sales_Vol + "</p>";
+  this.content += "<p><b>Address:</b> " + address + "<br>";
+  this.content += "<b>Employee Size:</b> " + this.properties.Emp_Size + "</br>";
+  this.content += "<b>Sales Volume:</b> " + this.properties.Sales_Vol + "</p>";
 
   // binds the popup to the marker and positions it on top center
   this.bindToLayer = function(){
