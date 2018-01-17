@@ -1,5 +1,8 @@
 /* script for UW Center for Cooperatives, David J. Waro */
 
+// import VueFuse from 'vue-fuse'
+// Vue.use(VueFuse)
+
 //initialize function called when the script loads
 function initialize(){
     createMap();
@@ -7,6 +10,9 @@ function initialize(){
 
 // global map variable
 var map;
+var city;
+var state;
+//var searchCtrl = L.control.fuseSearch({position: 'topleft'});
 
 // all-cooperatives marker cluster group
 var marker_cluster = L.markerClusterGroup({
@@ -106,6 +112,8 @@ function createMap(){
      position:'topleft'
   }).addTo(map);
 
+  //searchCtrl.addTo(map);
+
   // add navigation bar to the map
   L.control.navbar().addTo(map);
 
@@ -117,9 +125,11 @@ function getData(map) {
   
   // start spinner feedback while data is loading
   map.spin(true);
+
+  var data = "data/2015_1_2_18.geojson";
 	
   //load the data
-	$.ajax("data/2015_1_2_18.geojson", {
+	$.ajax(data, {
 	   dataType: "json",
 	   success: function(response){
 
@@ -128,6 +138,9 @@ function getData(map) {
 
 	      // call function to create markers
 	      createSymbols(response, map, attributes);
+        
+        //var search_field = ["Search_Add"];
+        //searchCtrl.indexFeatures(response.features, search_field);
 
 	    } // close to success
 	  }); // close to ajax
@@ -164,7 +177,45 @@ function createSymbols(data, map, attributes){
     pointToLayer: function(feature, latlng, map){
       return pointToLayer(feature, latlng, attributes);
     }
+    // onEachFeature: function (feature, layer) {
+    //     feature.layer = layer;
+    // }
   }).addTo(marker_cluster);
+
+  var option = {
+    keys: ['properties.Search_Add'],
+    shouldSort: true,
+    threshold: 0.05,
+    tokenize: true,
+    matchAllTokens: true
+  };
+
+  var fuse = new Fuse(data.features, option);
+
+  L.control.search({
+    layer: marker_cluster,
+    propertyName: 'Search_Add',
+    circleLocation: false,
+    marker: false,
+    moveToLocation: function (latlng, title, map) {
+      // set the view once searched to the circle marker's latlng and zoom
+      map.setView(latlng, 17);
+    }, // close to moveToLocation
+    filterData: function(text, records) {
+      var jsons = fuse.search(text),
+        ret = {}, key;
+      
+      for(var i in jsons) {
+        key = jsons[i].properties.Search_Add;
+        ret[ key ]= records[key];
+      }
+
+      console.log(jsons,ret);
+      return ret;
+    }
+  }).on('search:locationfound', function(e) {
+    //e.layer.openPopup();
+  }).addTo(map);
 
   // stop the spinner once the data is loaded
   setTimeout(function () {
@@ -177,20 +228,18 @@ function createSymbols(data, map, attributes){
       return marker_cluster._map.getBounds();
   };
 
+  // var searchControl = new L.Control.Search({
+  //   layer: marker_cluster, 
+  //   propertyName: 'Search_Add',
+  //   circleLocation: false,
+  //   marker: false,
+  //   moveToLocation: function (latlng, title, map) {
+  //     // set the view once searched to the circle marker's latlng and zoom
+  //     map.setView(latlng, 17);
+  //   } // close to moveToLocation
+  // });
 
-
-  var searchControl = new L.Control.Search({
-    layer: marker_cluster, 
-    propertyName: 'Search_Add',
-    circleLocation: false,
-    marker: false,
-    moveToLocation: function (latlng, title, map) {
-      // set the view once searched to the circle marker's latlng and zoom
-      map.setView(latlng, 17);
-    } // close to moveToLocation
-  });
-
-  map.addControl(searchControl);  //inizialize search control
+  // map.addControl(searchControl);  //inizialize search control
 
   //add zoom control with your options
   L.control.fullscreen({
@@ -246,6 +295,9 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
     });
   };
 
+  city = feature.properties.Search_Add.split(",")[2];
+  state = feature.properties.Search_Add.split(",")[3];
+
   // assign each marker to the layer
   var layer = L.marker(latlng, {title: name});
   layer.setIcon(icon);
@@ -280,6 +332,7 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
   layer.on({
     mouseover: function(){
       //this.openPopup();
+      console.log(feature.layer);
     },
     mouseout: function(){
       //this.closePopup();
@@ -307,7 +360,7 @@ function Popup(properties, layer, radius){
       address += ", " + this.properties.Search_Add.split(",")[3];
   this.content += "<p><b>Address:</b> " + address + "<br>";
   this.content += "<b>Employee Size:</b> " + this.properties.Emp_Size + "</br>";
-  this.content += "<b>Sales Volume:</b> " + this.properties.Sales_Vol + "</p>";
+  this.content += "<b>Sales Volume:</b> $" + this.properties.Sales_Vol + "</p>";
 
   // binds the popup to the marker and positions it on top center
   this.bindToLayer = function(){
