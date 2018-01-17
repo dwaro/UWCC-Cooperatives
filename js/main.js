@@ -76,18 +76,23 @@ function createMap(){
     zoomControl: false
   });
 
+  var roads = L.gridLayer.googleMutant({
+    type: 'roadmap' // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
+  }).addTo(map);
+
+
   // tileset, can easily be swapped out
 	var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	   maxZoom: 18,
 	   attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-	}).addTo(map);
+	});//.addTo(map);
 
   var mapbox_satellite = L.tileLayer('https://api.mapbox.com/styles/v1/djwaro/cjbzbsfd2g1vx2sruqno7xwkb/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZGp3YXJvIiwiYSI6ImNpdXJwYnRidTAwOWgyeXJ2ZnJ6ZnVtb3AifQ.1ajSBLNXDrHg6M7PE_Py_A', {
     attribution: 'Mapbox Satellite Streets'
   });
 
   var baseMaps = {
-    "Open Street Map": basemap,
+    "Google Roads": roads,
     "Mapbox Satellite": mapbox_satellite
   };
 

@@ -27,6 +27,10 @@
 	display: none;
 }
 
+.leaflet-google-layer {
+  z-index: inherit;
+}
+
 #legend {
 	position: absolute;
 	height: 200px;
