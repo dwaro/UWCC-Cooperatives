@@ -1,8 +1,5 @@
 /* script for UW Center for Cooperatives, David J. Waro */
 
-// import VueFuse from 'vue-fuse'
-// Vue.use(VueFuse)
-
 //initialize function called when the script loads
 function initialize(){
     createMap();
@@ -10,9 +7,6 @@ function initialize(){
 
 // global map variable
 var map;
-var city;
-var state;
-//var searchCtrl = L.control.fuseSearch({position: 'topleft'});
 
 // all-cooperatives marker cluster group
 var marker_cluster = L.markerClusterGroup({
@@ -80,7 +74,6 @@ function createMap(){
     type: 'roadmap' // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
   }).addTo(map);
 
-
   // tileset, can easily be swapped out
 	var basemap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	   maxZoom: 18,
@@ -117,8 +110,6 @@ function createMap(){
      position:'topleft'
   }).addTo(map);
 
-  //searchCtrl.addTo(map);
-
   // add navigation bar to the map
   L.control.navbar().addTo(map);
 
@@ -144,9 +135,6 @@ function getData(map) {
 	      // call function to create markers
 	      createSymbols(response, map, attributes);
         
-        //var search_field = ["Search_Add"];
-        //searchCtrl.indexFeatures(response.features, search_field);
-
 	    } // close to success
 	  }); // close to ajax
 };
@@ -215,7 +203,7 @@ function createSymbols(data, map, attributes){
         ret[ key ]= records[key];
       }
 
-      console.log(jsons,ret);
+      //console.log(jsons,ret);
       return ret;
     }
   }).on('search:locationfound', function(e) {
@@ -299,9 +287,6 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
         extraClasses: 'fa-rotate-0'
     });
   };
-
-  city = feature.properties.Search_Add.split(",")[2];
-  state = feature.properties.Search_Add.split(",")[3];
 
   // assign each marker to the layer
   var layer = L.marker(latlng, {title: name});
