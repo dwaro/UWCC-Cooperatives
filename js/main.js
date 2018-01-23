@@ -122,6 +122,7 @@ function getData(map) {
   // start spinner feedback while data is loading
   map.spin(true);
 
+  // data file
   var data = "data/2015_1_2_18.geojson";
 	
   //load the data
@@ -350,7 +351,12 @@ function Popup(properties, layer, radius){
       address += ", " + this.properties.Search_Add.split(",")[3];
   this.content += "<p><b>Address:</b> " + address + "<br>";
   this.content += "<b>Employee Size:</b> " + this.properties.Emp_Size + "</br>";
-  this.content += "<b>Sales Volume:</b> $" + this.properties.Sales_Vol + "</p>";
+
+  if (this.properties.Sales_Vol == 'Unknown') {
+    this.content += "<b>Sales Volume:</b> " + this.properties.Sales_Vol + "</p>";
+  } else {
+    this.content += "<b>Sales Volume:</b> $" + this.properties.Sales_Vol + "</p>";
+  };
 
   // binds the popup to the marker and positions it on top center
   this.bindToLayer = function(){
