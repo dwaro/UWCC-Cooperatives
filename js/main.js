@@ -92,18 +92,31 @@ function createMap(){
 	var csa_metro = new L.GeoJSON.AJAX("data/2016_csa_500k.geojson", {style: csaStyle});
   var non_metro = new L.GeoJSON.AJAX("data/Non_metro_500k.geojson", {style: non_metroStyle});
 
+  // var exclusive = {
+  //   "Metro Boundaries": {
+  //     "CSA Metro": csa_metro,
+  //     "Non Metro": non_metro
+  //   }
+  // };
+
   var overlayMaps = {
-    "All Cooperatives": marker_cluster,
-    "Commercial": marker_cluster1,
-    "Financial": marker_cluster2,
-    "Social": marker_cluster3,
-    "Utilities": marker_cluster4,
-    "CSA Metro": csa_metro,
-    "Non-Metro": non_metro
+    "Cooperatives": {
+      "All Cooperatives": marker_cluster,
+      "Commercial": marker_cluster1,
+      "Financial": marker_cluster2,
+      "Social": marker_cluster3,
+      "Utilities": marker_cluster4
+    },
+    "Metro Boundaries": {
+      "CSA Metro": csa_metro,
+      "Non Metro": non_metro
+    }
   };
 
   // layers control
-  L.control.layers(baseMaps, overlayMaps, {collapsed:false}).addTo(map);
+  L.control.groupedLayers(baseMaps, overlayMaps, {
+    collapsed:false
+  }).addTo(map);
 
   //add zoom control with your options
   L.control.zoom({

@@ -1,0 +1,13 @@
+.leaflet-control-layers-group-name{
+	font-weight:700;
+	margin-bottom:.2em;
+	margin-left:3px
+}
+.leaflet-control-layers-group{
+	margin-bottom:0.8em;
+	margin-top: 1.2em;
+}
+.leaflet-control-layers-scrollbar{
+	overflow-y:scroll;
+	padding-right:10px
+}
