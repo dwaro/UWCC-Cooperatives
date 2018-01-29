@@ -73,10 +73,6 @@
 	background-color: #29a329;
 }
 
-#legend:hover {
-	width: 320px;
-}
-
 #labels {
 	position: absolute;
 	top: 365px;
