@@ -64,7 +64,7 @@ function createMap(){
     spinjs: true,
     fullscreenControl: false,
     removeOutsideVisibleBounds: true,
-    center: [50, -110],
+    center: [50, -120],
     zoom: 3,
     maxZoom: 18,
     zoomControl: false
@@ -323,14 +323,6 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
 
   // add popup to marker
   popup.bindToLayer();
-
-  // $("#legend").on({mouseover: function(){
-  //   $("#labels").css("display", "inline-block");
-  //   },
-  //   mouseout: function() {
-  //   $("#labels").css("display", "none");
-  //   }
-  // });
 
   //event listeners to open popup on click
   layer.on({
