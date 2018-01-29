@@ -34,7 +34,7 @@
 #legend {
 	position: absolute;
 	height: 160px;
-	width: 280px;
+	width: 265px;
 	left: 0px;
 	top: 355px;
 	background-color: rgba(250, 250, 250, 1);
@@ -79,12 +79,12 @@
 
 #labels {
 	position: absolute;
-	top: 363px;
+	top: 365px;
 	left: 45px;
 	z-index: 10000000001;
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: bold;
-	line-height: 36px;
+	line-height: 36.5px;
 }
 
 .comIcon {
