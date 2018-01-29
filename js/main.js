@@ -64,7 +64,7 @@ function createMap(){
     spinjs: true,
     fullscreenControl: false,
     removeOutsideVisibleBounds: true,
-    center: [50, -120],
+    center: [50, -125],
     zoom: 3,
     maxZoom: 18,
     zoomControl: false
