@@ -109,7 +109,7 @@ function createMap(){
     },
     "Metro Boundaries": {
       "CSA Metro": csa_metro,
-      "Non Metro": non_metro
+      "Non-metro": non_metro
     }
   };
 
@@ -323,6 +323,24 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
 
   // add popup to marker
   popup.bindToLayer();
+
+  $("#info1").on({
+    mouseover: function(){
+      $("#info1_text").css("display", "inline-block");
+    },
+    mouseout: function(){
+      $("#info1_text").css("display", "none");
+    }
+  });
+
+  $("#info2").on({
+    mouseover: function(){
+      $("#info2_text").css("display", "inline-block");
+    },
+    mouseout: function(){
+      $("#info2_text").css("display", "none");
+    }
+  });
 
   //event listeners to open popup on click
   layer.on({

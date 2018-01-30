@@ -135,13 +135,50 @@ div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
 	height: 40px !important;
 }
 
-#filter_bar {
+.info {
 	position: absolute;
-	top: 210px;
-	right: 10px;
-	height: 1px;
-	background-color: rgba(0, 0, 0, 0.2);
-	width: 128px;
+	right: 25px;
 	z-index: 100000000000000000000 !important;
+	width: 17px;
+	height: 17px;
+}
+
+#info1 {
+	top: 256.5px;
+}
+
+.info:hover {
+	cursor: pointer;
+}
+
+#info1_text {
+	background-color: rgba(250,250,250,1);
 	display: none;
+	position: absolute;
+	top: 260px;
+	right: 150px;
+	border: solid;
+	border-color: black;
+	border-width: 1px;
+	border-radius: 8px;
+	max-width: 450px;
+	padding: 10px;
+}
+
+#info2 {
+	top: 281px;
+}
+
+#info2_text {
+	background-color: rgba(250,250,250,1);
+	display: none;
+	position: absolute;
+	top: 285px;
+	right: 150px;
+	border: solid;
+	border-color: black;
+	border-width: 1px;
+	border-radius: 8px;
+	max-width: 450px;
+	padding: 10px;
 }
