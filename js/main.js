@@ -136,7 +136,7 @@ function getData(map) {
   map.spin(true);
 
   // data file
-  var data = "data/2015_1_2_18.geojson";
+  var data = "data/1_30_data.geojson";
 	
   //load the data
 	$.ajax(data, {
@@ -260,7 +260,9 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
 
   // marker styling
   var icon;
-  if (feature.properties.Sector == 'Commercial Sales & Marketing') {
+  if (feature.properties.Sector == 'Agriculture & Farm Supply' || 
+    feature.properties.Sector == 'Grocery' || feature.properties.Sector == 'Other Sales, Services & Production' 
+    || feature.properties.Sector == 'Transport') {
     icon = L.AwesomeMarkers.icon({
         icon: 'ok-sign',
         iconColor: 'white',
@@ -268,7 +270,9 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
         prefix: 'glyphicon',
         extraClasses: 'fa-rotate-0'
     });
-  } else if (feature.properties.Sector == 'Financial') {
+  } else if (feature.properties.Sector == 'Credit Union' || feature.properties.Sector == 'Farm Credit' 
+    || feature.properties.Sector == 'Mutual Insurance' || feature.properties.Sector == 'Other Financial Services' 
+    || feature.properties.Sector == 'Cooperative Finance') {
     icon = L.AwesomeMarkers.icon({
         icon: 'ok-sign',
         iconColor: 'white',
@@ -276,7 +280,8 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
         prefix: 'glyphicon',
         extraClasses: 'fa-rotate-0'
     });
-  } else if (feature.properties.Sector == 'Social and Public Services') {
+  } else if (feature.properties.Sector == 'Healthcare' || feature.properties.Sector == 'Childcare' 
+    || feature.properties.Sector == 'Education' || feature.properties.Sector == 'Other Social Services') {
     icon = L.AwesomeMarkers.icon({
         icon: 'ok-sign',
         iconColor: 'white',
@@ -284,7 +289,8 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
         prefix: 'glyphicon',
         extraClasses: 'fa-rotate-0'
     });
-  } else if (feature.properties.Sector == 'Utilities') {
+  } else if (feature.properties.Sector == 'Rural Electric' || feature.properties.Sector == 'Telecom' 
+    || feature.properties.Sector == 'Water' || feature.properties.Sector == 'Other Utilities') {
     icon = L.AwesomeMarkers.icon({
         icon: 'ok-sign',
         iconColor: 'white',
@@ -306,13 +312,19 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
   var layer = L.marker(latlng, {title: name});
   layer.setIcon(icon);
 
-  if (feature.properties.Sector == 'Commercial Sales & Marketing') {
+  if (feature.properties.Sector == 'Agriculture & Farm Supply' || 
+    feature.properties.Sector == 'Grocery' || feature.properties.Sector == 'Other Sales, Services & Production' 
+    || feature.properties.Sector == 'Transport') {
     marker_cluster1.addLayer(layer);
-  } else if (feature.properties.Sector == 'Financial') {
+  } else if (feature.properties.Sector == 'Credit Union' || feature.properties.Sector == 'Farm Credit' 
+    || feature.properties.Sector == 'Mutual Insurance' || feature.properties.Sector == 'Other Financial Services' 
+    || feature.properties.Sector == 'Cooperative Finance') {
     marker_cluster2.addLayer(layer);
-  } else if (feature.properties.Sector == 'Social and Public Services') {
+  } else if (feature.properties.Sector == 'Healthcare' || feature.properties.Sector == 'Childcare' 
+    || feature.properties.Sector == 'Education' || feature.properties.Sector == 'Other Social Services') {
     marker_cluster3.addLayer(layer);
-  } else if (feature.properties.Sector == 'Utilities') {
+  } else if (feature.properties.Sector == 'Rural Electric' || feature.properties.Sector == 'Telecom' 
+    || feature.properties.Sector == 'Water' || feature.properties.Sector == 'Other Utilities') {
     marker_cluster4.addLayer(layer);
   } else {
     marker_cluster5.addLayer(layer);
@@ -376,10 +388,12 @@ function Popup(properties, layer, radius){
   this.content += "<b>Employee Size:</b> " + this.properties.Emp_Size + "</br>";
 
   if (this.properties.Sales_Vol == 'Unknown') {
-    this.content += "<b>Sales Volume:</b> " + this.properties.Sales_Vol + "</p>";
+    this.content += "<b>Sales Volume:</b> " + this.properties.Sales_Vol + "<br>";
   } else {
-    this.content += "<b>Sales Volume:</b> $" + this.properties.Sales_Vol + "</p>";
+    this.content += "<b>Sales Volume:</b> $" + this.properties.Sales_Vol + "<br>";
   };
+
+  this.content += "<b>Sector:</b> " + this.properties.Sector + "</p>";
 
   // binds the popup to the marker and positions it on top center
   this.bindToLayer = function(){
