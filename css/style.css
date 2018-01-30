@@ -162,6 +162,7 @@ div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
 	border-width: 1px;
 	border-radius: 8px;
 	max-width: 450px;
+	z-index: 100000000000000000000 !important;
 	padding: 10px;
 }
 
@@ -180,5 +181,6 @@ div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
 	border-width: 1px;
 	border-radius: 8px;
 	max-width: 450px;
+	z-index: 100000000000000000000 !important;
 	padding: 10px;
 }
