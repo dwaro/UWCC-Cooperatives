@@ -641,6 +641,7 @@ var a = 0;
 var b = 0;
 var fin_form_margin = 0;
 var plus2_top = 140;
+var bopen = "holder";
 var c = 0;
 var soc_form_margin = 0;
 var plus3_top = 164;
@@ -660,7 +661,7 @@ var info2_top = 281;
         fin_form_margin += 115;
         soc_form_margin += 115;
         util_form_margin += 115;
-        plus2_top += 117;
+        plus2_top += 116;
         plus3_top += 117;
         plus4_top += 117;
         info1_top += 115;
@@ -682,21 +683,30 @@ var info2_top = 281;
           $("#plus4").css("right", "115px");
           $(".info").css("right", "97px");
         };
+        // if (bopen == true) {
+        //   info1_top -= 120;
+        //   info2_top -= 120;
+        //   $(".fin_form").css("display", "none");
+        //   $("#plus2").attr('src', 'images/plus.png');
+        //   $("#social_filter").css("margin-top", "5px");
+        //   $("#info1").css("top", info1_top);
+        //   $("#info2").css("top", info2_top);
+        // };
         $(".comm_form").css("display", "inline-block");
         $(".fin_form").css("margin-top", fin_form_margin);
         $(".soc_form").css("margin-top", soc_form_margin);
         $(".util_form").css("margin-top", util_form_margin);
         open += 1;
         if (open > 0) {
-          $("#info1_text").css("right", "230px");
-          $("#info2_text").css("right", "230px");
+          $("#info1_text").css("right", "220px");
+          $("#info2_text").css("right", "220px");
         }
       } else {
         height = calc_height() - 115;
         fin_form_margin -= 115;
         soc_form_margin -= 115;
         util_form_margin -= 115;
-        plus2_top -= 117;
+        plus2_top -= 116;
         plus3_top -= 117;
         plus4_top -= 117;
         info1_top -= 115;
@@ -738,10 +748,11 @@ var info2_top = 281;
         height = calc_height() + 120;
         soc_form_margin += 120;
         util_form_margin += 120;
-        plus3_top += 122;
-        plus4_top += 122;
-        info1_top += 118;
-        info2_top += 118;
+        plus3_top += 123;
+        plus4_top += 123;
+        info1_top += 120;
+        info2_top += 120;
+        bopen = true;
         $("#controls").height(height);
         $("#social_filter").css("margin-top", "10.5em");
         $(".soc_form").css("margin-top", soc_form_margin);
@@ -763,17 +774,18 @@ var info2_top = 281;
         $(".fin_form").css("display", "inline-block");
         open += 1;
         if (open > 0) {
-          $("#info1_text").css("right", "230px");
-          $("#info2_text").css("right", "230px");
+          $("#info1_text").css("right", "220px");
+          $("#info2_text").css("right", "220px");
         }
       } else {
         height =  calc_height() - 120;
         soc_form_margin -= 120;
         util_form_margin -= 120;
-        plus3_top -= 122;
-        plus4_top -= 122;
+        plus3_top -= 123;
+        plus4_top -= 123;
         info1_top -= 120;
         info2_top -= 120;
+        bopen = false;
         $("#controls").height(height);
         $("#social_filter").css("margin-top", "5px");
         $("#plus3").css("top", plus3_top);
@@ -830,8 +842,8 @@ var info2_top = 281;
         $(".soc_form").css("display", "inline-block");
         open += 1;
         if (open > 0) {
-          $("#info1_text").css("right", "230px");
-          $("#info2_text").css("right", "230px");
+          $("#info1_text").css("right", "220px");
+          $("#info2_text").css("right", "220px");
         }
       } else {
         height =  calc_height() - 90;
@@ -889,8 +901,8 @@ var info2_top = 281;
         $(".util_form").css("display", "inline-block");
         open += 1;
         if (open > 0) {
-          $("#info1_text").css("right", "230px");
-          $("#info2_text").css("right", "230px");
+          $("#info1_text").css("right", "220px");
+          $("#info2_text").css("right", "220px");
         }
       } else {
         console.log($("#plus4").attr('src'));
