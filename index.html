@@ -25,6 +25,109 @@
 </head>
 <body>
 	<!-- map division -->
+  <!-- style="display:none;" -->
+  <div id="controls" class="leaflet-control-layers leaflet-control-layers-expanded">
+    <img src="images/plus.png" class="plus" id="plus1"  />
+    <img src="images/plus.png" class="plus" id="plus2" onmouseover="hover(this);" onmouseout="unhover(this);" />
+    <img src="images/plus.png" class="plus" id="plus3" onmouseover="hover(this);" onmouseout="unhover(this);" />
+    <img src="images/plus.png" class="plus" id="plus4" onmouseover="hover(this);" onmouseout="unhover(this);" />
+    <label>
+      <input type="radio" name="basemap" value="roads" class="leaflet-controls-layers-selector" checked>
+      <span> Google Roads</span>
+    </label>
+    <label>
+      <input type="radio" name="basemap" value="satellite" class="leaflet-control-layers-selector">
+      <span> Google Satellite</span>
+    </label>
+    <div id="bar"></div>
+    <label class="leaflet-control-layers-group-label filters">
+      <span class=".leaflet-control-layers-group-name">Cooperatives</span>
+    </label>
+    <label>
+      <input type="checkbox" name="top_sector" value="all_coops" class="leaflet-control-layers-selector leaflet-control-layers-group" id="all_coops" checked><span> All Cooperatives</span>
+    </label>
+    <label>
+      <input type="checkbox" name="top_sector" value="commercial" class="leaflet-control-layers-selector leaflet-control-layers-group" id="commercial_filter"><span> Commercial</span>
+    </label>
+    <label>
+      <input type="checkbox" name="top_sector" value="financial" class="leaflet-control-layers-selector leaflet-control-layers-group" id="financial_filter"><span> Financial</span>
+    </label>
+    <label>
+      <input type="checkbox" name="top_sector" value="social" class="leaflet-control-layers-selector leaflet-control-layers-group" id="social_filter"><span> Social</span>
+    </label>
+    <label>
+      <input type="checkbox" name="top_sector" value="utilities" class="leaflet-control-layers-selector leaflet-control-layers-group" id="utilities_filter"><span> Utilities</span>
+    </label>
+    <form class="comm_form" style="display:none">
+      <label>
+      <input type="checkbox" name="comm_sector" value="ag_farmSupply" class="leaflet-control-layers-selector leaflet-control-layers-group" id="ag_farm_filter"><span> Agriculture & Farm Supply</span>
+    </label>
+    <label>
+      <input type="checkbox" name="comm_sector" value="grocery" class="leaflet-control-layers-selector leaflet-control-layers-group" id="grocery_filter"><span> Grocery</span>
+    </label>
+    <label>
+      <input type="checkbox" name="comm_sector" value="other_sales" class="leaflet-control-layers-selector leaflet-control-layers-group" id="other_sales_filter"><span> Other Sales, Services & Production</span>
+    </label>
+    <label>
+    <input type="checkbox" name="comm_sector" value="transport" class="leaflet-control-layers-selector leaflet-control-layers-group" id="transport_filter"><span> Transport</span>
+    </label>
+    </form>
+    <form class="fin_form" style="display:none">
+      <label>
+      <input type="checkbox" name="fin_sector" value="credit_unions" class="leaflet-control-layers-selector leaflet-control-layers-group" id="cu_filter"><span> Credit Unions</span>
+    </label>
+    <label>
+      <input type="checkbox" name="fin_sector" value="farm_credit" class="leaflet-control-layers-selector leaflet-control-layers-group" id="farm_credit_filter"><span> Farm Credit</span>
+    </label>
+    <label>
+      <input type="checkbox" name="fin_sector" value="mutual_insurance" class="leaflet-control-layers-selector leaflet-control-layers-group" id="mutual_insurance_filter"><span> Mutual Insurance</span>
+    </label>
+    <label>
+    <input type="checkbox" name="fin_sector" value="other_financial" class="leaflet-control-layers-selector leaflet-control-layers-group" id="other_financial_filter"><span> Other Financial Services</span>
+    </label>
+    <label>
+    <input type="checkbox" name="fin_sector" value="coop_finance" class="leaflet-control-layers-selector leaflet-control-layers-group" id="coop_finance_filter"><span> Cooperative Finance</span>
+    </label>
+    </form>
+    <form class="soc_form" style="display:none">
+      <label>
+      <input type="checkbox" name="soc_sector" value="healthcare" class="leaflet-control-layers-selector leaflet-control-layers-group" id="healthcare_filter"><span> Healthcare</span>
+    </label>
+    <label>
+      <input type="checkbox" name="soc_sector" value="childcare" class="leaflet-control-layers-selector leaflet-control-layers-group" id="childcare_filter"><span> Childcare</span>
+    </label>
+    <label>
+      <input type="checkbox" name="soc_sector" value="education" class="leaflet-control-layers-selector leaflet-control-layers-group" id="education_filter"><span> Education</span>
+    </label>
+    <label>
+    <input type="checkbox" name="soc_sector" value="other_social" class="leaflet-control-layers-selector leaflet-control-layers-group" id="other_social_filter"><span> Other Social Services</span>
+    </label>
+    </form>
+    <form class="util_form" style="display:none">
+      <label>
+      <input type="checkbox" name="util_sector" value="rural_electric" class="leaflet-control-layers-selector leaflet-control-layers-group" id="rural_electric_filter"><span> Rural Electric</span>
+    </label>
+    <label>
+      <input type="checkbox" name="util_sector" value="telecom" class="leaflet-control-layers-selector leaflet-control-layers-group" id="telecom_filter"><span> Telecom</span>
+    </label>
+    <label>
+      <input type="checkbox" name="util_sector" value="water" class="leaflet-control-layers-selector leaflet-control-layers-group" id="water_filter"><span> Water</span>
+    </label>
+    <label>
+    <input type="checkbox" name="util_sector" value="other_util" class="leaflet-control-layers-selector leaflet-control-layers-group" id="other_utilities_filter"><span> Other Utilities</span>
+    </label>
+    </form>
+    <label class="leaflet-control-layers-group-label filters" id="boundaries">
+      <span class=".leaflet-control-layers-group-name">Metro Boundaries</span>
+    </label>
+    <label>
+      <input type="checkbox" name="metros" value="csa_metro" class="leaflet-control-layers-selector leaflet-control-layers-group" id="metro_filter"><span> CSA Metro</span>
+    </label>
+    <label>
+      <input type="checkbox" name="metros" value="non_metro" class="leaflet-control-layers-selector leaflet-control-layers-group" id="non_metro_filter"><span> Non-metro</span>
+    </label>
+  </div>
+
 	<div id="mapdiv"></div>
   <div id="search"></div>
   <div id="legend">
@@ -39,8 +142,10 @@
     <div id="social">Social & Public Services</div>
     <div id="utilities">Utilities</div>
   </div>
+
   <img src="images/info.png" alt="Info Hover" class="info" id="info1">
   <img src="images/info.png" alt="Info Hover" class="info" id="info2">
+
   <p id="info1_text"><strong>Combined Statistical Areas</strong><br>Combined statistical areas (CSA) consist of two or more adjacent metropolitan and micropolitan statistical areas that have substantial employment interchange. The metropolitan and micropolitan statistical areas that combine to create a CSA retain separate identities within the larger CSA. - U.S. Census Bureau</p>
   <p id="info2_text"><strong>Non-metro Areas</strong><br>Non-metro geographies are simply the inverse of the combined statistical areas.  They are the counties in the United States that fail to meet the criteria used by the U.S. Census Bureau to delineate the combined statistical areas.</p>
 
@@ -69,4 +174,20 @@
   <script src='https://unpkg.com/leaflet.gridlayer.googlemutant@latest/Leaflet.GoogleMutant.js'></script>
   <script type="text/javascript" src="js/main.js"></script>
 </body>
+<script>
+  // function hover(element) {
+  //   if (element.attr('src') == 'images/plus.png') {
+  //     element.setAttribute('src', 'images/plus_highlight.png');
+  //   } else {
+  //     element.setAttribute('src', 'images/minus_highlight.png');
+  //   };
+  // }
+  // function unhover(element) {
+  //   if ($("#plus1").attr('src') == 'images/plus_highlight.png') {
+  //     element.setAttribute('src', 'images/plus.png');
+  //   } else {
+  //     element.setAttribute('src', 'images/minus.png');
+  //   };
+  // }
+</script>
 </html>

@@ -54,6 +54,149 @@ var marker_cluster5 = L.markerClusterGroup({
   chunkedLoading: true
 });
 
+var ag_farmSupply = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'comIcon', bgpos: [0,0]});
+  }
+});
+var grocery = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'comIcon', bgpos: [0,0]});
+  }
+});
+var other_sales = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'comIcon', bgpos: [0,0]});
+  }
+});
+var transport = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'comIcon', bgpos: [0,0]});
+  }
+});
+var credit_union = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'finIcon', bgpos: [0,0]});
+  }
+});
+var farm_credit = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'finIcon', bgpos: [0,0]});
+  }
+});
+var mutual_insurance = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'finIcon', bgpos: [0,0]});
+  }
+});
+var other_financial = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'finIcon', bgpos: [0,0]});
+  }
+});
+var cooperative_finance = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'finIcon', bgpos: [0,0]});
+  }
+});
+var healthcare = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'socIcon', bgpos: [0,0]});
+  }
+});
+var childcare = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'socIcon', bgpos: [0,0]});
+  }
+});
+var education = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'socIcon', bgpos: [0,0]});
+  }
+});
+var other_social = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'socIcon', bgpos: [0,0]});
+  }
+});
+var rural_electric = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'utilIcon', bgpos: [0,0]});
+  }
+});
+var telecom = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'utilIcon', bgpos: [0,0]});
+  }
+});
+var water = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'utilIcon', bgpos: [0,0]});
+  }
+});
+var other_utilities = L.markerClusterGroup({
+  showCoverageOnHover: false,
+  removeOutsideVisibleBounds: true,
+  chunkedLoading: true,
+  iconCreateFunction: function(cluster) {
+    return L.divIcon({html: cluster.getChildCount(), className: 'utilIcon', bgpos: [0,0]});
+  }
+});
+
+
+
+var csa_metro = new L.GeoJSON.AJAX("data/2016_csa_500k.geojson", {style: csaStyle});
+var non_metro = new L.GeoJSON.AJAX("data/Non_metro_500k.geojson", {style: non_metroStyle});
+
+
 /* function initializes the map object and assigns its setting (i.e. center, bounds, zoom, restrictions) and adds
 a basemap tileset */
 function createMap(){
@@ -84,20 +227,14 @@ function createMap(){
     attribution: 'Mapbox Satellite Streets'
   });
 
+  var satellite = L.gridLayer.googleMutant({
+    type: 'satellite' // valid values are 'roadmap', 'satellite', 'terrain' and 'hybrid'
+  });
+
   var baseMaps = {
     "Google Roads": roads,
-    "Mapbox Satellite": mapbox_satellite
+    "Google Satellite": satellite
   };
-
-	var csa_metro = new L.GeoJSON.AJAX("data/2016_csa_500k.geojson", {style: csaStyle});
-  var non_metro = new L.GeoJSON.AJAX("data/Non_metro_500k.geojson", {style: non_metroStyle});
-
-  // var exclusive = {
-  //   "Metro Boundaries": {
-  //     "CSA Metro": csa_metro,
-  //     "Non Metro": non_metro
-  //   }
-  // };
 
   var overlayMaps = {
     "Cooperatives": {
@@ -114,9 +251,22 @@ function createMap(){
   };
 
   // layers control
-  L.control.groupedLayers(baseMaps, overlayMaps, {
-    collapsed:false
-  }).addTo(map);
+  // L.control.groupedLayers(baseMaps, overlayMaps, {
+  //   collapsed:false
+  // }).addTo(map);
+
+  // custom layers control handling basemap radio buttons
+  $('input[name=basemap]:radio').on('click change', function(e) {
+    var a;
+    a = $(this).val();
+    if (a == 'satellite') {
+      satellite.addTo(map);
+      map.removeLayer(roads);
+    } else {
+      roads.addTo(map);
+      map.removeLayer(satellite);
+    };
+  });
 
   //add zoom control with your options
   L.control.zoom({
@@ -184,9 +334,6 @@ function createSymbols(data, map, attributes){
     pointToLayer: function(feature, latlng, map){
       return pointToLayer(feature, latlng, attributes);
     }
-    // onEachFeature: function (feature, layer) {
-    //     feature.layer = layer;
-    // }
   }).addTo(marker_cluster);
 
   var option = {
@@ -316,16 +463,67 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
     feature.properties.Sector == 'Grocery' || feature.properties.Sector == 'Other Sales, Services & Production' 
     || feature.properties.Sector == 'Transport') {
     marker_cluster1.addLayer(layer);
+    if (feature.properties.Sector =='Agriculture & Farm Supply') {
+      ag_farmSupply.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Grocery') {
+      grocery.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Other Sales, Services & Production') {
+      other_sales.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Transport') {
+      transport.addLayer(layer);
+    };
   } else if (feature.properties.Sector == 'Credit Union' || feature.properties.Sector == 'Farm Credit' 
     || feature.properties.Sector == 'Mutual Insurance' || feature.properties.Sector == 'Other Financial Services' 
     || feature.properties.Sector == 'Cooperative Finance') {
     marker_cluster2.addLayer(layer);
+    if (feature.properties.Sector =='Credit Union') {
+      credit_union.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Farm Credit') {
+      farm_credit.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Mutual Insurance') {
+      mutual_insurance.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Other Financial Services') {
+      other_financial.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Cooperative Finance') {
+      cooperative_finance.addLayer(layer);
+    };
   } else if (feature.properties.Sector == 'Healthcare' || feature.properties.Sector == 'Childcare' 
     || feature.properties.Sector == 'Education' || feature.properties.Sector == 'Other Social Services') {
     marker_cluster3.addLayer(layer);
+    if (feature.properties.Sector =='Healthcare') {
+      healthcare.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Childcare') {
+      childcare.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Education') {
+      education.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Other Social Services') {
+      other_social.addLayer(layer);
+    };
   } else if (feature.properties.Sector == 'Rural Electric' || feature.properties.Sector == 'Telecom' 
     || feature.properties.Sector == 'Water' || feature.properties.Sector == 'Other Utilities') {
     marker_cluster4.addLayer(layer);
+    if (feature.properties.Sector =='Rural Electric') {
+      rural_electric.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Telecom') {
+      telecom.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Water') {
+      water.addLayer(layer);
+    };
+    if (feature.properties.Sector =='Other Utilities') {
+      other_utilities.addLayer(layer);
+    };
   } else {
     marker_cluster5.addLayer(layer);
   }; 
@@ -353,6 +551,19 @@ function pointToLayer(feature, latlng, attributes, layer, map) {
       $("#info2_text").css("display", "none");
     }
   });
+
+  // custom layers control handling basemap radio buttons
+  // $('input[name=basemap]:radio').on('click change', function(e) {
+  //   var a;
+  //   a = $(this).val();
+  //   if (a == 'mapbox_satellite') {
+  //     mapbox_satellite.addTo(map);
+  //     map.removeLayer(roads);
+  //   } else {
+  //     roads.addTo(map);
+  //     map.removeLayer(mapbox_satellite);
+  //   };
+  // });
 
   //event listeners to open popup on click
   layer.on({
@@ -425,6 +636,580 @@ function non_metroStyle() {
     fillOpacity: 0.45
   };
 };
+
+var a = 0;
+var b = 0;
+var fin_form_margin = 0;
+var plus2_top = 140;
+var c = 0;
+var soc_form_margin = 0;
+var plus3_top = 164;
+var d = 0;
+var util_form_margin = 0;
+var plus4_top = 188;
+var height;
+var open = 0;
+var info1_top = 256.5;
+var info2_top = 281;
+
+  $('#plus1').on({
+    click: function() {
+      a++;
+      if (a%2 != 0) {
+        height = calc_height() + 115;
+        fin_form_margin += 115;
+        soc_form_margin += 115;
+        util_form_margin += 115;
+        plus2_top += 117;
+        plus3_top += 117;
+        plus4_top += 117;
+        info1_top += 115;
+        info2_top += 115;
+        $("#controls").height(height);
+        $("#financial_filter").css("margin-top", "10em");
+        $("#plus2").css("top", plus2_top);
+        $("#plus3").css("top", plus3_top);
+        $("#plus4").css("top", plus4_top);
+        $("#info1").css("top", info1_top);
+        $("#info2").css("top", info2_top);
+        $("#plus1").attr('src', 'images/minus.png');
+        if (open == 0) {
+          $("#controls").css("width", "200px");
+          $("#bar").css("width", "200px");
+          $("#plus1").css("right", "90px");
+          $("#plus2").css("right", "107px");
+          $("#plus3").css("right", "123px");
+          $("#plus4").css("right", "115px");
+          $(".info").css("right", "97px");
+        };
+        $(".comm_form").css("display", "inline-block");
+        $(".fin_form").css("margin-top", fin_form_margin);
+        $(".soc_form").css("margin-top", soc_form_margin);
+        $(".util_form").css("margin-top", util_form_margin);
+        open += 1;
+        if (open > 0) {
+          $("#info1_text").css("right", "230px");
+          $("#info2_text").css("right", "230px");
+        }
+      } else {
+        height = calc_height() - 115;
+        fin_form_margin -= 115;
+        soc_form_margin -= 115;
+        util_form_margin -= 115;
+        plus2_top -= 117;
+        plus3_top -= 117;
+        plus4_top -= 117;
+        info1_top -= 115;
+        info2_top -= 115;
+        $("#controls").height(height);
+        $("#financial_filter").css("margin-top", "5px");
+        $(".fin_form").css("margin-top", fin_form_margin);
+        $(".soc_form").css("margin-top", soc_form_margin);
+        $(".util_form").css("margin-top", util_form_margin);
+        $("#plus2").css("top", plus2_top);
+        $("#plus3").css("top", plus3_top);
+        $("#plus4").css("top", plus4_top);
+        $("#info1").css("top", info1_top);
+        $("#info2").css("top", info2_top);
+        $("#plus1").attr('src', 'images/plus.png');
+        if (open == 1) {
+          $("#controls").css("width", "130px");
+          $("#bar").css("width", "130px");
+          $("#plus1").css("right", "20px");
+          $("#plus2").css("right", "37px");
+          $("#plus3").css("right", "53px");
+          $("#plus4").css("right", "45px");
+          $(".info").css("right", "25px");
+        };
+        $(".comm_form").css("display", "none");
+        open -= 1;
+        if (open == 0) {
+          $("#info1_text").css("right", "150px");
+          $("#info2_text").css("right", "150px");
+        }
+      };
+    }
+  });
+
+  $('#plus2').on({
+    click: function() {
+      b++;
+      if (b%2 != 0) {
+        height = calc_height() + 120;
+        soc_form_margin += 120;
+        util_form_margin += 120;
+        plus3_top += 122;
+        plus4_top += 122;
+        info1_top += 118;
+        info2_top += 118;
+        $("#controls").height(height);
+        $("#social_filter").css("margin-top", "10.5em");
+        $(".soc_form").css("margin-top", soc_form_margin);
+        $(".util_form").css("margin-top", util_form_margin);
+        $("#plus3").css("top", plus3_top);
+        $("#plus4").css("top", plus4_top);
+        $("#info1").css("top", info1_top);
+        $("#info2").css("top", info2_top);
+        $("#plus2").attr('src', 'images/minus.png');
+        if (open == 0) {
+          $("#controls").css("width", "200px");
+          $("#bar").css("width", "200px");
+          $("#plus1").css("right", "90px");
+          $("#plus2").css("right", "107px");
+          $("#plus3").css("right", "123px");
+          $("#plus4").css("right", "115px");
+          $(".info").css("right", "97px");
+        };
+        $(".fin_form").css("display", "inline-block");
+        open += 1;
+        if (open > 0) {
+          $("#info1_text").css("right", "230px");
+          $("#info2_text").css("right", "230px");
+        }
+      } else {
+        height =  calc_height() - 120;
+        soc_form_margin -= 120;
+        util_form_margin -= 120;
+        plus3_top -= 122;
+        plus4_top -= 122;
+        info1_top -= 120;
+        info2_top -= 120;
+        $("#controls").height(height);
+        $("#social_filter").css("margin-top", "5px");
+        $("#plus3").css("top", plus3_top);
+        $("#plus4").css("top", plus4_top);
+        $("#plus2").attr('src', 'images/plus.png');
+        $("#info1").css("top", info1_top);
+        $("#info2").css("top", info2_top);
+        if (open == 1) {
+          $("#controls").css("width", "130px");
+          $("#bar").css("width", "130px");
+          $("#plus1").css("right", "20px");
+          $("#plus2").css("right", "37px");
+          $("#plus3").css("right", "53px");
+          $("#plus4").css("right", "45px");
+          $(".info").css("right", "25px");
+        };
+        $(".fin_form").css("display", "none");
+        $(".soc_form").css("margin-top", soc_form_margin);
+        $(".util_form").css("margin-top", util_form_margin);
+        open -= 1;
+        if (open == 0) {
+          $("#info1_text").css("right", "150px");
+          $("#info2_text").css("right", "150px");
+        }
+      };
+    }
+  });
+
+  $('#plus3').on({
+    click: function() {
+      c++;
+      if (c%2 != 0) {
+        height = calc_height() + 90;
+        util_form_margin += 95;
+        plus4_top += 92;
+        info1_top += 92;
+        info2_top += 92;
+        $("#controls").height(height);
+        $("#utilities_filter").css("margin-top", "8em");
+        $(".util_form").css("margin-top", util_form_margin);
+        $("#plus4").css("top", plus4_top);
+        $("#plus3").attr('src', 'images/minus.png');
+        $("#info1").css("top", info1_top);
+        $("#info2").css("top", info2_top);
+        if (open == 0) {
+          $("#controls").css("width", "200px");
+          $("#bar").css("width", "200px");
+          $("#plus1").css("right", "90px");
+          $("#plus2").css("right", "107px");
+          $("#plus3").css("right", "123px");
+          $("#plus4").css("right", "115px");
+          $(".info").css("right", "97px");
+        };
+        $(".soc_form").css("display", "inline-block");
+        open += 1;
+        if (open > 0) {
+          $("#info1_text").css("right", "230px");
+          $("#info2_text").css("right", "230px");
+        }
+      } else {
+        height =  calc_height() - 90;
+        util_form_margin -= 95;
+        plus4_top -= 92;
+        info1_top -= 91;
+        info2_top -= 91;
+        $("#controls").height(height);
+        $("#utilities_filter").css("margin-top", "5px");
+        $("#plus4").css("top", plus4_top);
+        $("#plus3").attr('src', 'images/plus.png');
+        $("#info1").css("top", info1_top);
+        $("#info2").css("top", info2_top);
+        if (open == 1) {
+          $("#controls").css("width", "130px");
+          $("#bar").css("width", "130px");
+          $("#plus1").css("right", "20px");
+          $("#plus2").css("right", "37px");
+          $("#plus3").css("right", "53px");
+          $("#plus4").css("right", "45px");
+          $(".info").css("right", "25px");
+        };
+        $(".soc_form").css("display", "none");
+        $(".util_form").css("margin-top", util_form_margin);
+        open -= 1;
+        if (open == 0) {
+          $("#info1_text").css("right", "150px");
+          $("#info2_text").css("right", "150px");
+        }
+      };
+    }
+  });
+
+  $('#plus4').on({
+    click: function() {
+      d++;
+      if (d%2 != 0) {
+        height = calc_height() + 90;
+        info1_top += 92;
+        info2_top += 92;
+        $("#controls").height(height);
+        $("#boundaries").css("margin-top", "9em");
+        $("#plus4").attr('src', 'images/minus.png');
+        $("#info1").css("top", info1_top);
+        $("#info2").css("top", info2_top);
+        if (open == 0) {
+          $("#controls").css("width", "200px");
+          $("#bar").css("width", "200px");
+          $("#plus1").css("right", "90px");
+          $("#plus2").css("right", "107px");
+          $("#plus3").css("right", "123px");
+          $("#plus4").css("right", "115px");
+          $(".info").css("right", "97px");
+        };
+        $(".util_form").css("display", "inline-block");
+        open += 1;
+        if (open > 0) {
+          $("#info1_text").css("right", "230px");
+          $("#info2_text").css("right", "230px");
+        }
+      } else {
+        console.log($("#plus4").attr('src'));
+        height =  calc_height() - 90;
+        info1_top -= 92;
+        info2_top -= 92;
+        $("#controls").height(height);
+        $("#boundaries").css("margin-top", "1.5em");
+        $("#plus4").attr('src', 'images/plus.png');
+        $("#info1").css("top", info1_top);
+        $("#info2").css("top", info2_top);
+        if (open == 1) {
+          $("#controls").css("width", "130px");
+          $("#bar").css("width", "130px");
+          $("#plus1").css("right", "20px");
+          $("#plus2").css("right", "37px");
+          $("#plus3").css("right", "53px");
+          $("#plus4").css("right", "45px");
+          $(".info").css("right", "25px");
+        };
+        $(".util_form").css("display", "none");
+        open -= 1;
+        if (open == 0) {
+          $("#info1_text").css("right", "150px");
+          $("#info2_text").css("right", "150px");
+        }
+      };
+    }
+  });
+
+function calc_height() {
+  var e = $("#controls").height();
+  return e;
+};
+
+// custom layers control handling top level sector buttons
+$('input[name=top_sector]:checkbox').on('click change', function(e) {
+    var a;
+    a = $(this).val();
+    if (a == 'all_coops') {
+      if ($('#all_coops').is(':checked')) {
+        marker_cluster.addTo(map);
+      } else { 
+        map.removeLayer(marker_cluster);
+      }
+    };
+    if (a == 'commercial') {
+      if ($('#commercial_filter').is(':checked')) {
+        marker_cluster1.addTo(map);
+      } else {
+        map.removeLayer(marker_cluster1);
+      }
+    };
+    if (a == 'financial') {
+      if ($('#financial_filter').is(':checked')) {
+        marker_cluster2.addTo(map);
+      } else {
+        map.removeLayer(marker_cluster2);
+      }
+    };
+    if (a == 'social') {
+      if ($('#social_filter').is(':checked')) {
+        marker_cluster3.addTo(map);
+      } else {
+        map.removeLayer(marker_cluster3);
+      }
+    };
+    if (a == 'utilities') {
+      if ($('#utilities_filter').is(':checked')) {
+        marker_cluster4.addTo(map);
+      } else {
+        map.removeLayer(marker_cluster4);
+      }
+    };
+});
+
+// custom layers control handling metro boundaries
+$('input[name=metros]:checkbox').on('click change', function(e) {
+    var a;
+    a = $(this).val();
+    if (a == 'csa_metro') {
+      if ($('#metro_filter').is(':checked')) {
+        csa_metro.addTo(map);
+      } else { 
+        map.removeLayer(csa_metro);
+      }
+    };
+    if (a == 'non_metro') {
+      if ($('#non_metro_filter').is(':checked')) {
+        non_metro.addTo(map);
+      } else {
+        map.removeLayer(non_metro);
+      }
+    };
+});
+
+// custom layers control handling commercial sector
+$('input[name=comm_sector]:checkbox').on('click change', function(e) {
+    var a;
+    a = $(this).val();
+    if (a == 'ag_farmSupply') {
+      if ($('#ag_farm_filter').is(':checked')) {
+        ag_farmSupply.addTo(map);
+      } else { 
+        map.removeLayer(ag_farmSupply);
+      }
+    };
+    if (a == 'grocery') {
+      if ($('#grocery_filter').is(':checked')) {
+        grocery.addTo(map);
+      } else {
+        map.removeLayer(grocery);
+      }
+    };
+    if (a == 'other_sales') {
+      if ($('#other_sales_filter').is(':checked')) {
+        other_sales.addTo(map);
+      } else {
+        map.removeLayer(other_sales);
+      }
+    };
+    if (a == 'transport') {
+      if ($('#transport_filter').is(':checked')) {
+        transport.addTo(map);
+      } else {
+        map.removeLayer(transport);
+      }
+    };
+});
+
+// custom layers control handling financial sector
+$('input[name=fin_sector]:checkbox').on('click change', function(e) {
+    var a;
+    a = $(this).val();
+    if (a == 'credit_unions') {
+      if ($('#cu_filter').is(':checked')) {
+        credit_union.addTo(map);
+      } else { 
+        map.removeLayer(credit_union);
+      }
+    };
+    if (a == 'farm_credit') {
+      if ($('#farm_credit_filter').is(':checked')) {
+        farm_credit.addTo(map);
+      } else {
+        map.removeLayer(farm_credit);
+      }
+    };
+    if (a == 'mutual_insurance') {
+      if ($('#mutual_insurance_filter').is(':checked')) {
+        mutual_insurance.addTo(map);
+      } else {
+        map.removeLayer(mutual_insurance);
+      }
+    };
+    if (a == 'other_financial') {
+      if ($('#other_financial_filter').is(':checked')) {
+        other_financial.addTo(map);
+      } else {
+        map.removeLayer(other_financial);
+      }
+    };
+    if (a == 'coop_finance') {
+      if ($('#coop_finance_filter').is(':checked')) {
+        cooperative_finance.addTo(map);
+      } else {
+        map.removeLayer(cooperative_finance);
+      }
+    };
+});
+
+// custom layers control handling social sector
+$('input[name=soc_sector]:checkbox').on('click change', function(e) {
+    var a;
+    a = $(this).val();
+    if (a == 'healthcare') {
+      if ($('#healthcare_filter').is(':checked')) {
+        healthcare.addTo(map);
+      } else { 
+        map.removeLayer(healthcare);
+      }
+    };
+    if (a == 'childcare') {
+      if ($('#childcare_filter').is(':checked')) {
+        childcare.addTo(map);
+      } else {
+        map.removeLayer(childcare);
+      }
+    };
+    if (a == 'education') {
+      if ($('#education_filter').is(':checked')) {
+        education.addTo(map);
+      } else {
+        map.removeLayer(education);
+      }
+    };
+    if (a == 'other_social') {
+      if ($('#other_social_filter').is(':checked')) {
+        other_social.addTo(map);
+      } else {
+        map.removeLayer(other_social);
+      }
+    };
+});
+
+// custom layers control handling utilities sector
+$('input[name=util_sector]:checkbox').on('click change', function(e) {
+    var a;
+    a = $(this).val();
+    if (a == 'rural_electric') {
+      if ($('#rural_electric_filter').is(':checked')) {
+        rural_electric.addTo(map);
+      } else { 
+        map.removeLayer(rural_electric);
+      }
+    };
+    if (a == 'telecom') {
+      if ($('#telecom_filter').is(':checked')) {
+        telecom.addTo(map);
+      } else {
+        map.removeLayer(telecom);
+      }
+    };
+    if (a == 'water') {
+      if ($('#water_filter').is(':checked')) {
+        water.addTo(map);
+      } else {
+        map.removeLayer(water);
+      }
+    };
+    if (a == 'other_util') {
+      if ($('#other_utilities_filter').is(':checked')) {
+        other_utilities.addTo(map);
+      } else {
+        map.removeLayer(other_utilities);
+      }
+    };
+});
+
+var asource = "holder";
+$("#plus1").on({
+    mouseover: function(){
+      if ($("#plus1").attr('src') == "images/plus.png") {
+        asource = "images/plus_highlight.png";
+      } else {
+        asource = "images/minus_highlight.png";
+      }
+      $("#plus1").attr("src", asource);
+    },
+    mouseout: function(){
+      if ($("#plus1").attr('src') == "images/plus_highlight.png" || $("#plus1").attr('src') == "images/plus.png") {
+        asource = "images/plus.png";
+      } else {
+        asource = "images/minus.png";
+      }
+      $("#plus1").attr("src", asource);
+    }
+});
+
+var bsource = "holder";
+$("#plus2").on({
+    mouseover: function(){
+      if ($("#plus2").attr('src') == "images/plus.png") {
+        bsource = "images/plus_highlight.png";
+      } else {
+        bsource = "images/minus_highlight.png";
+      }
+      $("#plus2").attr("src", bsource);
+    },
+    mouseout: function(){
+      if ($("#plus2").attr('src') == "images/plus_highlight.png" || $("#plus2").attr('src') == "images/plus.png") {
+        bsource = "images/plus.png";
+      } else {
+        bsource = "images/minus.png";
+      }
+      $("#plus2").attr("src", bsource);
+    }
+});
+
+var csource = "holder";
+$("#plus3").on({
+    mouseover: function(){
+      if ($("#plus3").attr('src') == "images/plus.png") {
+        csource = "images/plus_highlight.png";
+      } else {
+        csource = "images/minus_highlight.png";
+      }
+      $("#plus3").attr("src", csource);
+    },
+    mouseout: function(){
+      if ($("#plus3").attr('src') == "images/plus_highlight.png" || $("#plus3").attr('src') == "images/plus.png") {
+        csource = "images/plus.png";
+      } else {
+        csource = "images/minus.png";
+      }
+      $("#plus3").attr("src", csource);
+    }
+});
+
+var dsource = "holder";
+$("#plus4").on({
+    mouseover: function(){
+      if ($("#plus4").attr('src') == "images/plus.png") {
+        dsource = "images/plus_highlight.png";
+      } else {
+        dsource = "images/minus_highlight.png";
+      }
+      $("#plus4").attr("src", dsource);
+    },
+    mouseout: function(){
+      if ($("#plus4").attr('src') == "images/plus_highlight.png" || $("#plus4").attr('src') == "images/plus.png") {
+        dsource = "images/plus.png";
+      } else {
+        dsource = "images/minus.png";
+      }
+      $("#plus4").attr("src", dsource);
+    }
+});
+
 
 //call the initialize function when the document has loaded
 $(document).ready(initialize);

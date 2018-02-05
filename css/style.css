@@ -162,7 +162,7 @@ div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
 	border-width: 1px;
 	border-radius: 8px;
 	max-width: 450px;
-	z-index: 100000000000000000000 !important;
+	z-index: 1000000000000000000001 !important;
 	padding: 10px;
 }
 
@@ -183,4 +183,85 @@ div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
 	max-width: 450px;
 	z-index: 100000000000000000000 !important;
 	padding: 10px;
+}
+
+#controls {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 130px;
+	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+	height: 305px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	clear: both;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+	background-color: rgb(250,250,250);
+	z-index: 100000000000000000000 !important;
+}
+
+#bar {
+	position: absolute;
+	width: 130px;
+	height: 1px;
+	top: 55px;
+	left: 0px;
+	z-index: 100000000000000000000 !important;
+	background-color: rgba(0,0,0,0.15);
+}
+
+.filters {
+	margin-top: 1.5em;
+}
+
+.plus {
+	position: absolute;
+	z-index: 100000000000000000000 !important;
+	width: 12px;
+	height: 14px;
+	cursor: pointer;
+}
+
+#plus1 {
+	top: 116px;
+	right: 20px;
+}
+
+#plus2 {
+	top: 140px;
+	right: 37px;
+}
+
+#plus3 {
+	top: 165px;
+	right: 53px;
+}
+
+#plus4 {
+	top: 188px;
+	right: 45px;
+}
+
+.comm_form {
+	position: absolute;
+	top: 137px;
+	left: 25px;
+}
+
+.fin_form {
+	position: absolute;
+	top: 160px;
+	left: 25px;
+}
+
+.soc_form {
+	position: absolute;
+	top: 185px;
+	left: 25px;
+}
+
+.util_form {
+	position: absolute;
+	top: 208px;
+	left: 25px;
 }
