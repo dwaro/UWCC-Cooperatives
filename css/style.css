@@ -137,14 +137,14 @@ div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
 
 .info {
 	position: absolute;
-	right: 25px;
+	right: 20px;
 	z-index: 100000000000000000000 !important;
 	width: 17px;
 	height: 17px;
 }
 
 #info1 {
-	top: 256.5px;
+	top: 247px;
 }
 
 .info:hover {
@@ -167,7 +167,7 @@ div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
 }
 
 #info2 {
-	top: 281px;
+	top: 272px;
 }
 
 #info2_text {
@@ -264,4 +264,12 @@ div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
 	position: absolute;
 	top: 208px;
 	left: 25px;
+}
+
+#master {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
 }

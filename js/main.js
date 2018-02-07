@@ -653,8 +653,8 @@ var plus4_top = 188;
 var dopen = "holder";
 var height;
 var open = 0;
-var info1_top = 256.5;
-var info2_top = 281;
+var info1_top = 247;
+var info2_top = 272;
 var info1_text = 260;
 var info2_text = 285;
 
@@ -691,7 +691,7 @@ var info2_text = 285;
           $("#plus2").css("right", "107px");
           $("#plus3").css("right", "123px");
           $("#plus4").css("right", "115px");
-          $(".info").css("right", "97px");
+          $(".info").css("right", "92px");
         };
         if (bopen == true) {
           b++;
@@ -846,7 +846,7 @@ var info2_text = 285;
           $("#plus2").css("right", "107px");
           $("#plus3").css("right", "123px");
           $("#plus4").css("right", "115px");
-          $(".info").css("right", "97px");
+          $(".info").css("right", "92px");
         };
         if (aopen == true) {
           a++;
@@ -994,7 +994,7 @@ var info2_text = 285;
           $("#plus2").css("right", "107px");
           $("#plus3").css("right", "123px");
           $("#plus4").css("right", "115px");
-          $(".info").css("right", "97px");
+          $(".info").css("right", "92px");
         };
         if (aopen == true) {
           a++;
@@ -1138,7 +1138,7 @@ var info2_text = 285;
           $("#plus2").css("right", "107px");
           $("#plus3").css("right", "123px");
           $("#plus4").css("right", "115px");
-          $(".info").css("right", "97px");
+          $(".info").css("right", "92px");
         };
         if (aopen == true) {
           a++;
