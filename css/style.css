@@ -36,7 +36,7 @@
 	height: 160px;
 	width: 265px;
 	left: 0px;
-	top: 355px;
+	bottom: 40px;
 	background-color: rgba(250, 250, 250, 1);
 	border: solid;
 	border-top-right-radius: 10px;
@@ -75,7 +75,7 @@
 
 #labels {
 	position: absolute;
-	top: 365px;
+	bottom: 47px;
 	left: 45px;
 	z-index: 10000000001;
 	font-size: 14px;
