@@ -250,11 +250,6 @@ function createMap(){
     }
   };
 
-  // layers control
-  // L.control.groupedLayers(baseMaps, overlayMaps, {
-  //   collapsed:false
-  // }).addTo(map);
-
   // custom layers control handling basemap radio buttons
   $('input[name=basemap]:radio').on('click change', function(e) {
     var a;
@@ -339,14 +334,15 @@ function createSymbols(data, map, attributes){
   var option = {
     keys: ['properties.Search_Add'],
     shouldSort: true,
-    threshold: 0.05,
+    threshold: 0.02,
     tokenize: true,
-    matchAllTokens: true
+    matchAllTokens: true,
+    minMatchCharLength: 7
   };
 
   var fuse = new Fuse(data.features, option);
 
-  L.control.search({
+  var searchControl = L.control.search({
     layer: marker_cluster,
     propertyName: 'Search_Add',
     circleLocation: false,
@@ -390,7 +386,7 @@ function createSymbols(data, map, attributes){
   //   moveToLocation: function (latlng, title, map) {
   //     // set the view once searched to the circle marker's latlng and zoom
   //     map.setView(latlng, 17);
-  //   } // close to moveToLocation
+  //   }// close to moveToLocation
   // });
 
   // map.addControl(searchControl);  //inizialize search control
@@ -666,7 +662,7 @@ var info2_text = 285;
         fin_form_margin += 115;
         soc_form_margin += 115;
         util_form_margin += 115;
-        plus2_top += 116;
+        plus2_top += 117;
         plus3_top += 117;
         plus4_top += 117;
         info1_top += 117;
@@ -774,7 +770,7 @@ var info2_text = 285;
         fin_form_margin -= 115;
         soc_form_margin -= 115;
         util_form_margin -= 115;
-        plus2_top -= 116;
+        plus2_top -= 117;
         plus3_top -= 117;
         plus4_top -= 117;
         info1_top -= 117;
@@ -929,8 +925,8 @@ var info2_text = 285;
         height =  calc_height() - 120;
         soc_form_margin -= 120;
         util_form_margin -= 120;
-        plus3_top -= 123;
-        plus4_top -= 123;
+        plus3_top -= 122;
+        plus4_top -= 122;
         info1_top -= 119;
         info2_top -= 119;
         bopen = false;
@@ -972,7 +968,7 @@ var info2_text = 285;
       if (c%2 != 0) {
         height = calc_height() + 90;
         util_form_margin += 95;
-        plus4_top += 92;
+        plus4_top += 91;
         info1_top += 92;
         info2_top += 92;
         copen = true;
@@ -1032,8 +1028,8 @@ var info2_text = 285;
           info1_top -= 120;
           info2_top -= 120;
           height = calc_height() - 120;
-          plus3_top -= 123;
-          plus4_top -= 123;
+          plus3_top -= 122;
+          plus4_top -= 122;
           open -=1;
           soc_form_margin -= 120;
           util_form_margin -= 120;
@@ -1080,7 +1076,7 @@ var info2_text = 285;
       } else {
         height =  calc_height() - 90;
         util_form_margin -= 95;
-        plus4_top -= 92;
+        plus4_top -= 91;
         info1_top -= 91;
         info2_top -= 91;
         copen = false;
@@ -1176,8 +1172,8 @@ var info2_text = 285;
           info1_top -= 120;
           info2_top -= 120;
           height = calc_height() - 120;
-          plus3_top -= 123;
-          plus4_top -= 123;
+          plus3_top -= 122;
+          plus4_top -= 122;
           open -=1;
           soc_form_margin -= 120;
           util_form_margin -= 120;
@@ -1202,7 +1198,7 @@ var info2_text = 285;
           info1_top -= 91;
           info2_top -= 91;
           height = calc_height() - 90;
-          plus4_top -= 92;
+          plus4_top -= 91;
           open -=1;
           util_form_margin -= 95;
           info1_text -= 91;
