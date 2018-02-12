@@ -207,7 +207,7 @@ function createMap(){
     spinjs: true,
     fullscreenControl: false,
     removeOutsideVisibleBounds: true,
-    center: [50, -130],
+    center: [50, -115],
     zoom: 3,
     maxZoom: 18,
     zoomControl: false
@@ -392,9 +392,9 @@ function createSymbols(data, map, attributes){
   // map.addControl(searchControl);  //inizialize search control
 
   //add zoom control with your options
-  L.control.fullscreen({
-     position:'topleft'
-  }).addTo(map);
+  // L.control.fullscreen({
+  //    position:'topleft'
+  // }).addTo(map);
 
 }; // close to createSymbols
 

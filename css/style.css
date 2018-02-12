@@ -45,6 +45,7 @@
 	border-color: black;
 	border-left: none;
 	z-index: 10000000000;
+	display: none;
 }
 
 .legend {
@@ -53,6 +54,7 @@
 	height: 20px;
 	left: 11px;
 	border-radius: 25px;
+	display: none;
 }
 
 #comm_circle {
@@ -81,6 +83,7 @@
 	font-size: 14px;
 	font-weight: bold;
 	line-height: 36.5px;
+	display: none;
 }
 
 .comIcon {
@@ -265,7 +268,7 @@ div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
 
 .util_form {
 	position: absolute;
-	color: #29a329;;
+	color: #29a329;
 	top: 208px;
 	left: 25px;
 }
