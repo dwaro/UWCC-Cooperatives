@@ -653,19 +653,19 @@ var info2_text = 285;
 var scrollTop = $(window).scrollTop(),
         elementOffset = $('#commercial_filter').offset().top,
         distance1 = (elementOffset - scrollTop);
-$('#plus1').css("top", distance1-3);
+$('#plus1').css("top", distance1-1.5);
 var scrollTop2 = $(window).scrollTop(),
         elementOffset2 = $('#financial_filter').offset().top,
         distance2 = (elementOffset2 - scrollTop2);
-$('#plus2').css("top", distance2-3);
+$('#plus2').css("top", distance2-1.5);
 var scrollTop3 = $(window).scrollTop(),
         elementOffset3 = $('#social_filter').offset().top,
         distance3 = (elementOffset3 - scrollTop3);
-$('#plus3').css("top", distance3-3);
+$('#plus3').css("top", distance3-1.5);
 var scrollTop4 = $(window).scrollTop(),
         elementOffset4 = $('#utilities_filter').offset().top,
         distance4 = (elementOffset4 - scrollTop4);
-$('#plus4').css("top", distance4-3);
+$('#plus4').css("top", distance4-1.5);
 
   $('#plus1').on({
     click: function() {
@@ -1276,13 +1276,8 @@ function calc2_top() {
   var scroll_top = $(window).scrollTop(),
         element_offset = $('#financial_filter').offset().top,
         e = (element_offset - scroll_top);
-        e = e - 3;
+        e = e - 1.5;
         console.log(e);
-  return e;
-};
-
-function calc2_margin_top() {
-  var e = $('#financial_filter').css("margin-top");
   return e;
 };
 
@@ -1290,7 +1285,7 @@ function calc3_top() {
   var scroll_top = $(window).scrollTop(),
         element_offset = $('#social_filter').offset().top,
         e = (element_offset - scroll_top);
-        e = e - 3;
+        e = e - 1.5;
   return e;
 };
 
@@ -1298,7 +1293,7 @@ function calc4_top() {
   var scroll_top = $(window).scrollTop(),
         element_offset = $('#utilities_filter').offset().top,
         e = (element_offset - scroll_top);
-        e = e - 3;
+        e = e - 1.5;
   return e;
 };
 
