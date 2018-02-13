@@ -824,6 +824,10 @@ $('#plus4').css("top", distance4-1.5);
         };
         $(".comm_form").css("display", "none");
         open -= 1;
+        if (open == 0) {    
+          $("#info1_text").css("right", "150px");   
+          $("#info2_text").css("right", "150px");   
+        }
       };
     }
   });
@@ -974,6 +978,10 @@ $('#plus4').css("top", distance4-1.5);
         $(".soc_form").css("margin-top", soc_form_margin);
         $(".util_form").css("margin-top", util_form_margin);
         open -= 1;
+        if (open == 0) {    
+          $("#info1_text").css("right", "150px");   
+          $("#info2_text").css("right", "150px");   
+        }
       };
     }
   });
@@ -1120,6 +1128,10 @@ $('#plus4').css("top", distance4-1.5);
         $(".soc_form").css("display", "none");
         $(".util_form").css("margin-top", util_form_margin);
         open -= 1;
+        if (open == 0) {    
+          $("#info1_text").css("right", "150px");   
+          $("#info2_text").css("right", "150px");   
+        }
       };
     }
   });
@@ -1262,6 +1274,10 @@ $('#plus4').css("top", distance4-1.5);
         };
         $(".util_form").css("display", "none");
         open -= 1;
+        if (open == 0) {    
+         $("#info1_text").css("right", "150px");   
+         $("#info2_text").css("right", "150px");   
+       }
       };
     }
   });
