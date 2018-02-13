@@ -650,6 +650,12 @@ var info1_top = 247;
 var info2_top = 272;
 var info1_text = 260;
 var info2_text = 285;
+
+var comm_form;
+var fin_form;
+var soc_form;
+var util_form;
+
 var scrollTop = $(window).scrollTop(),
         elementOffset = $('#commercial_filter').offset().top,
         distance1 = (elementOffset - scrollTop);
@@ -769,7 +775,9 @@ $('#plus4').css("top", distance4-1.5);
           $("#controls").height(height);
           $(".util_form").css("margin-top", util_form_margin);
         };
+        comm_form = calc1_top() + 8.5;
         $(".comm_form").css("display", "inline-block");
+        $(".comm_form").css("top", comm_form);
         $(".fin_form").css("margin-top", fin_form_margin);
         $(".soc_form").css("margin-top", soc_form_margin);
         $(".util_form").css("margin-top", util_form_margin);
@@ -928,7 +936,9 @@ $('#plus4').css("top", distance4-1.5);
           $("#controls").height(height);
           $(".util_form").css("margin-top", util_form_margin);
         };
+        fin_form = calc2_top() + 8.5;
         $(".fin_form").css("display", "inline-block");
+        $(".fin_form").css("top", fin_form);
         open += 1;
         if (open > 0) {
           $("#info1_text").css("right", "220px");
@@ -1080,7 +1090,9 @@ $('#plus4').css("top", distance4-1.5);
           $("#controls").height(height);
           $(".util_form").css("margin-top", util_form_margin);
         };
+        soc_form = calc3_top() + 8.5;
         $(".soc_form").css("display", "inline-block");
+        $(".soc_form").css("top", soc_form);
         open += 1;
         if (open > 0) {
           $("#info1_text").css("right", "220px");
@@ -1227,7 +1239,9 @@ $('#plus4').css("top", distance4-1.5);
           $("#controls").height(height);
           $(".util_form").css("margin-top", util_form_margin);
         };
+        util_form = calc4_top() + 8.5;
         $(".util_form").css("display", "inline-block");
+        $(".util_form").css("top", util_form);
         open += 1;
         if (open > 0) {
           $("#info1_text").css("right", "220px");
@@ -1272,12 +1286,19 @@ function calc_height() {
   return e;
 };
 
+function calc1_top() {
+  var scroll_top = $(window).scrollTop(),
+        element_offset = $('#commercial_filter').offset().top,
+        e = (element_offset - scroll_top);
+        e = e - 1.5;
+  return e;
+};
+
 function calc2_top() {
   var scroll_top = $(window).scrollTop(),
         element_offset = $('#financial_filter').offset().top,
         e = (element_offset - scroll_top);
         e = e - 1.5;
-        console.log(e);
   return e;
 };
 

@@ -249,28 +249,24 @@ div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
 .comm_form {
 	position: absolute;
 	color: #008ae6;
-	top: 137px;
 	left: 25px;
 }
 
 .fin_form {
 	position: absolute;
 	color: rgb(215, 0, 0);
-	top: 160px;
 	left: 25px;
 }
 
 .soc_form {
 	position: absolute;
 	color: orange;
-	top: 185px;
 	left: 25px;
 }
 
 .util_form {
 	position: absolute;
 	color: #29a329;
-	top: 208px;
 	left: 25px;
 }
 
