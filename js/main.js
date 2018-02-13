@@ -702,10 +702,10 @@ $('#plus4').css("top", distance4-1.5);
         if (open == 0) {
           $("#controls").css("width", "200px");
           $("#bar").css("width", "200px");
-          $("#plus1").css("right", "90px");
-          $("#plus2").css("right", "107px");
-          $("#plus3").css("right", "123px");
-          $("#plus4").css("right", "115px");
+          $("#plus1").css("right", "101px");
+          $("#plus2").css("right", "118px");
+          $("#plus3").css("right", "134px");
+          $("#plus4").css("right", "126px");
           $(".info").css("margin", "2.5px 70px 0px 0px");
         };
         if (bopen == true) {
@@ -859,10 +859,10 @@ $('#plus4').css("top", distance4-1.5);
         if (open == 0) {
           $("#controls").css("width", "200px");
           $("#bar").css("width", "200px");
-          $("#plus1").css("right", "90px");
-          $("#plus2").css("right", "107px");
-          $("#plus3").css("right", "123px");
-          $("#plus4").css("right", "115px");
+          $("#plus1").css("right", "101px");
+          $("#plus2").css("right", "118px");
+          $("#plus3").css("right", "134px");
+          $("#plus4").css("right", "126px");
           $(".info").css("margin", "2.5px 70px 0px 0px");
         };
         if (aopen == true) {
@@ -999,7 +999,7 @@ $('#plus4').css("top", distance4-1.5);
         $("#info1_text").css("top", info1_text);
         $("#info2_text").css("top", info2_text);
         $("#controls").height(height);
-        $("#utilities_filter").css("margin-top", "8em");
+        $("#utilities_filter").css("margin-top", "100px");
         plus4_top = calc4_top();
         $(".util_form").css("margin-top", util_form_margin);
         $("#plus4").css("top", plus4_top);
@@ -1009,10 +1009,10 @@ $('#plus4').css("top", distance4-1.5);
         if (open == 0) {
           $("#controls").css("width", "200px");
           $("#bar").css("width", "200px");
-          $("#plus1").css("right", "90px");
-          $("#plus2").css("right", "107px");
-          $("#plus3").css("right", "123px");
-          $("#plus4").css("right", "115px");
+          $("#plus1").css("right", "101px");
+          $("#plus2").css("right", "118px");
+          $("#plus3").css("right", "134px");
+          $("#plus4").css("right", "126px");
           $(".info").css("margin", "2.5px 70px 0px 0px");
         };
         if (aopen == true) {
@@ -1155,10 +1155,10 @@ $('#plus4').css("top", distance4-1.5);
         if (open == 0) {
           $("#controls").css("width", "200px");
           $("#bar").css("width", "200px");
-          $("#plus1").css("right", "90px");
-          $("#plus2").css("right", "107px");
-          $("#plus3").css("right", "123px");
-          $("#plus4").css("right", "115px");
+          $("#plus1").css("right", "101px");
+          $("#plus2").css("right", "118px");
+          $("#plus3").css("right", "134px");
+          $("#plus4").css("right", "126px");
           $(".info").css("margin", "2.5px 70px 0px 0px");
         };
         if (aopen == true) {
