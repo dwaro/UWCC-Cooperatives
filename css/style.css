@@ -140,7 +140,7 @@ div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
 
 .info {
 	float: right;
-	margin: 1px 10px 0px 0px;
+	margin: 2.5px 10px 0px 0px;
 	z-index: 100000000000000000000 !important;
 	width: 17px;
 	height: 17px;
