@@ -28,10 +28,6 @@
   <!-- style="display:none;" -->
   <div class="wrapper">
   <div id="controls" class="leaflet-control-layers leaflet-control-layers-expanded" style="position: absolute; z-index:100000000000000000 !important;">
-    <img src="images/plus.png" class="plus" id="plus1"  />
-    <img src="images/plus.png" class="plus" id="plus2" onmouseover="hover(this);" onmouseout="unhover(this);" />
-    <img src="images/plus.png" class="plus" id="plus3" onmouseover="hover(this);" onmouseout="unhover(this);" />
-    <img src="images/plus.png" class="plus" id="plus4" onmouseover="hover(this);" onmouseout="unhover(this);" />
     <label>
       <input type="radio" name="basemap" value="roads" class="leaflet-controls-layers-selector" style="position: relative;" checked>
       <span> Google Roads</span>
@@ -50,14 +46,15 @@
     <label>
       <input type="checkbox" name="top_sector" value="commercial" class="leaflet-control-layers-selector leaflet-control-layers-group" id="commercial_filter"><span style="color: #008ae6;"> Commercial </span>
     </label>
+    <!-- <img src="images/plus.png" class="plus" id="plus2" onmouseover="hover(this);" onmouseout="unhover(this);" /> -->
     <label>
-      <input type="checkbox" name="top_sector" value="financial" class="leaflet-control-layers-selector leaflet-control-layers-group" id="financial_filter"><span style="color: rgb(215, 0, 0);"> Financial</span>
+      <input type="checkbox" name="top_sector" value="financial" class="leaflet-control-layers-selector leaflet-control-layers-group" id="financial_filter"><span style="color: rgb(215, 0, 0);"> Financial </span>
     </label>
     <label>
-      <input type="checkbox" name="top_sector" value="social" class="leaflet-control-layers-selector leaflet-control-layers-group" id="social_filter"><span style="color:orange"> Social</span>
+      <input type="checkbox" name="top_sector" value="social" class="leaflet-control-layers-selector leaflet-control-layers-group" id="social_filter"><span style="color:orange"> Social </span>
     </label>
     <label>
-      <input type="checkbox" name="top_sector" value="utilities" class="leaflet-control-layers-selector leaflet-control-layers-group" id="utilities_filter"><span style="color: #29a329;"> Utilities</span>
+      <input type="checkbox" name="top_sector" value="utilities" class="leaflet-control-layers-selector leaflet-control-layers-group" id="utilities_filter"><span style="color: #29a329;"> Utilities </span>
     </label>
     <form class="comm_form" style="display:none">
       <label>
@@ -131,6 +128,11 @@
     </label>
   </div>
   </div>
+
+  <img src="images/plus.png" class="plus" id="plus1" onmouseover="hover(this);" onmouseout="unhover(this);" />
+  <img src="images/plus.png" class="plus" id="plus2" onmouseover="hover(this);" onmouseout="unhover(this);" />
+  <img src="images/plus.png" class="plus" id="plus3" onmouseover="hover(this);" onmouseout="unhover(this);" />
+  <img src="images/plus.png" class="plus" id="plus4" onmouseover="hover(this);" onmouseout="unhover(this);" />
 
   <p id="info1_text"><strong>Combined Statistical Areas</strong><br>Combined statistical areas (CSA) consist of two or more adjacent metropolitan and micropolitan statistical areas that have substantial employment interchange. The metropolitan and micropolitan statistical areas that combine to create a CSA retain separate identities within the larger CSA. - U.S. Census Bureau</p>
   <p id="info2_text"><strong>Non-metro Areas</strong><br>Non-metro geographies are simply the inverse of the combined statistical areas.  They are the counties in the United States that fail to meet the criteria used by the U.S. Census Bureau to delineate the combined statistical areas.</p>
