@@ -287,7 +287,7 @@ function getData(map) {
   map.spin(true);
 
   // data file
-  var data = "data/1_30_data.geojson";
+  var data = "data/map_data_2015_combined.geojson";
 	
   //load the data
 	$.ajax(data, {
