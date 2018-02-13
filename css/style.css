@@ -188,6 +188,13 @@ div.leaflet-marker-icon.utilIcon.leaflet-zoom-animated.leaflet-interactive {
 	padding: 10px;
 }
 
+.wrapper {
+	position: relative;
+	width: 130px;
+	float: right;
+	margin: 0 auto;
+}
+
 #controls {
 	position: absolute;
 	top: 10px;
