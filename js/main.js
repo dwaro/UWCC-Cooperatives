@@ -271,6 +271,12 @@ function createMap(){
   // add navigation bar to the map
   L.control.navbar().addTo(map);
 
+  //add zoom control with your options
+  L.control.fullscreen({
+     position:'topleft'
+  }).addTo(map);
+
+
 	getData(map);
 };
 
@@ -390,11 +396,6 @@ function createSymbols(data, map, attributes){
   // });
 
   // map.addControl(searchControl);  //inizialize search control
-
-  //add zoom control with your options
-  // L.control.fullscreen({
-  //    position:'topleft'
-  // }).addTo(map);
 
 }; // close to createSymbols
 
